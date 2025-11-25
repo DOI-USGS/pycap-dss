@@ -16,7 +16,7 @@ PyPi and conda-forge official releases
 
 Version 1.1.0 (2025-11-25)
 --------------------------
-* Additional options for AnalaysisProject
+* Additional options for AnalysisProject
     * Add option to allow instantiation of AnalysisProject by sending
         a dictionary of properties directly rather than requiring
         an external yml file.
