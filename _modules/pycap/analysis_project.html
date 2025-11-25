@@ -202,7 +202,7 @@
 
 
 <div class="viewcode-block" id="Project"><a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project">[docs]</a><span class="k">class</span> <span class="nc">Project</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ymlfile</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ymlfile</span><span class="p">,</span> <span class="n">write_results_to_files</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">project_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Highest-level Class for a well drawdown and/or depletion analysis.</span>
 <span class="sd">        This Class is developed for the specific analysis needs of the</span>
@@ -215,9 +215,19 @@
 <span class="sd">        ----------</span>
 <span class="sd">        ymlfile: string or pathlib.Path</span>
 <span class="sd">            Path to a yml file containing configuration information for a project.</span>
+<span class="sd">            If None, project is initiated from the project_dict arg, if present. If</span>
+<span class="sd">            both are None, throw an error. </span>
 
+<span class="sd">        write_results_to_files: Bool</span>
+<span class="sd">            True means all output files are written to disk. False means results are</span>
+<span class="sd">            only held in memory and not written. Default is True</span>
 
+<span class="sd">        project_dict: dictionary</span>
+<span class="sd">            Dictionary containing all the data from a yml configuration. Only read if </span>
+<span class="sd">            ymlfile is None. This option is to allow an in-memory-only driving of the </span>
+<span class="sd">            project to avoid any interaction with the disk.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_results_to_files</span> <span class="o">=</span> <span class="n">write_results_to_files</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status_categories</span> <span class="o">=</span> <span class="p">[</span>
             <span class="s2">&quot;existing&quot;</span><span class="p">,</span>
             <span class="s2">&quot;active&quot;</span><span class="p">,</span>
@@ -244,12 +254,22 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__stream_responses</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span> <span class="o">=</span> <span class="n">ymlfile</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ymlfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">ifp</span><span class="p">:</span>
-            <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">ifp</span><span class="p">)</span>
-        <span class="c1"># make a home for the report file</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;output&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outpath</span><span class="p">):</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outpath</span><span class="p">)</span>
+        <span class="c1"># populate the project data from YML or directly from a dictionary</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ymlfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">ifp</span><span class="p">:</span>  
+                <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">ifp</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">project_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">project_dict</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="p">(</span>
+                <span class="s2">&quot;Must either provide a YML file or a project dictionary&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_results_to_files</span><span class="p">:</span>
+            <span class="c1"># make a home for the report file</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;output&quot;</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outpath</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outpath</span><span class="p">)</span>
 
         <span class="c1"># parse project_properties block</span>
         <span class="k">if</span> <span class="s2">&quot;project_properties&quot;</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -308,9 +328,9 @@
 
         <span class="c1"># create well objects</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_create_well_objects</span><span class="p">()</span>
-
         <span class="c1"># report out on yaml input to screen and logfile</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_report_yaml_input</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_results_to_files</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_report_yaml_input</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_parse_project_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Method to parse all the project properties from the YAML file block</span>
@@ -882,25 +902,28 @@
             <span class="n">agg_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
             <span class="n">agg_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">rows</span>
 
-            <span class="c1"># make a report file - named from the YML name</span>
-            <span class="n">ymlbase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">name</span>
-            <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.table_report.csv&quot;</span><span class="p">)</span>
+            <span class="c1"># if writing output, make the filenames and write the csvs</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_results_to_files</span><span class="p">:</span>
+                <span class="n">ymlbase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">name</span>
+                <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.table_report.csv&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                <span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;.base_stream_depletion.csv&quot;</span>
+                <span class="p">)</span>
+                <span class="n">agg_base_stream_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_filename</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_ts_filename</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;.all_ts.csv&quot;</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">all_depl_ts</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_ts_filename</span><span class="p">)</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span>
-            <span class="n">agg_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span><span class="p">)</span>
             <span class="c1"># slap the csv dataframes into self</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">agg_df</span> <span class="o">=</span> <span class="n">agg_df</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;.base_stream_depletion.csv&quot;</span>
-            <span class="p">)</span>
-            <span class="n">agg_base_stream_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_filename</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_ts_filename</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;.all_ts.csv&quot;</span><span class="p">)</span>
-            <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">all_depl_ts</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_ts_filename</span><span class="p">)</span>
-
             <span class="bp">self</span><span class="o">.</span><span class="n">agg_base_stream_df</span> <span class="o">=</span> <span class="n">agg_base_stream_df</span>
 
+            
+            
+            
         <span class="k">else</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">cn</span><span class="p">,</span> <span class="n">cw</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wells</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdd</span> <span class="ow">in</span> <span class="n">cw</span><span class="o">.</span><span class="n">drawdown</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -917,18 +940,18 @@
                 <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_combined&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
 
             <span class="n">agg_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
-            <span class="n">agg_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">rows</span>
+            <span class="n">agg_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">rows</span>           \
+            <span class="c1"># save the dataframe of results into self.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">agg_df</span> <span class="o">=</span> <span class="n">agg_df</span>
 
-            <span class="c1"># make a report file - named from the YML name</span>
-            <span class="n">ymlbase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">name</span>
-            <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.table_report.csv&quot;</span><span class="p">)</span>
-            <span class="c1"># make a home for the report file</span>
-            <span class="n">outpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;output&quot;</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">outpath</span><span class="p">):</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">outpath</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_results_to_files</span><span class="p">:</span>
+                <span class="c1"># make a report file - named from the YML name</span>
+                <span class="n">ymlbase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">name</span>
+                <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.table_report.csv&quot;</span><span class="p">)</span>
+                <span class="c1"># make a home for the report file</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span><span class="p">)</span></div></div>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span> <span class="o">=</span> <span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span>
-            <span class="n">agg_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
@@ -939,7 +962,7 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 17, 2025.
+      <span class="lastupdated">Last updated on Nov 25, 2025.
       </span></p>
   </div>
 
