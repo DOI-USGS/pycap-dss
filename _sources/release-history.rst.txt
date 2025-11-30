@@ -22,4 +22,8 @@ Version 1.1.0 (2025-11-25)
         an external yml file.
     * Add option to AnalysisProject to suppress writing to disk
 
+Version 1.1.1 (2025-11-30)
+--------------------------
+* Debugging options for AnalysisProject
+    * allowing for `write_results_to_files` even without a yml file. Results will be written to `default` as a root rather than the YML filename in this case.
 
