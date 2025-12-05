@@ -411,7 +411,7 @@
 <div class="viewcode-block" id="ward_lough_drawdown"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.ward_lough_drawdown">[docs]</a><span class="k">def</span> <span class="nf">ward_lough_drawdown</span><span class="p">(</span>
     <span class="n">T1</span><span class="p">,</span>
     <span class="n">S1</span><span class="p">,</span>
-    <span class="n">t</span><span class="p">,</span>
+    <span class="n">time</span><span class="p">,</span>
     <span class="n">dist</span><span class="p">,</span>
     <span class="n">Q</span><span class="p">,</span>
     <span class="n">T2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -448,7 +448,7 @@
 <span class="sd">    S: float</span>
 <span class="sd">        Specific yield for upper aquifer [unitless]</span>
 <span class="sd">        (S1 in the original paper)</span>
-<span class="sd">    t: float, optionally np.array or list</span>
+<span class="sd">    time: float, optionally np.array or list</span>
 <span class="sd">        time at which to calculate results [T]</span>
 <span class="sd">    dist: Distance between pumping well and stream [L]</span>
 <span class="sd">        (L in the original paper)</span>
@@ -493,7 +493,7 @@
 <span class="sd">        stream width (b in paper) [L]</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">_make_arrays</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">_make_arrays</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="n">_make_arrays</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">PycapException</span><span class="p">(</span>
@@ -529,7 +529,7 @@
         <span class="n">streambed_K</span><span class="p">,</span>
         <span class="n">aquitard_thick</span><span class="p">,</span>
         <span class="n">aquitard_K</span><span class="p">,</span>
-        <span class="n">t</span><span class="p">,</span>
+        <span class="n">time</span><span class="p">,</span>
         <span class="n">x</span><span class="p">,</span>
         <span class="n">y</span><span class="p">,</span>
     <span class="p">)</span>
@@ -1137,7 +1137,7 @@
 <div class="viewcode-block" id="ward_lough_depletion"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.ward_lough_depletion">[docs]</a><span class="k">def</span> <span class="nf">ward_lough_depletion</span><span class="p">(</span>
     <span class="n">T1</span><span class="p">,</span>
     <span class="n">S1</span><span class="p">,</span>
-    <span class="n">t</span><span class="p">,</span>
+    <span class="n">time</span><span class="p">,</span>
     <span class="n">dist</span><span class="p">,</span>
     <span class="n">Q</span><span class="p">,</span>
     <span class="n">T2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1233,31 +1233,43 @@
         <span class="n">streambed_K</span><span class="p">,</span>
         <span class="n">aquitard_thick</span><span class="p">,</span>
         <span class="n">aquitard_K</span><span class="p">,</span>
-        <span class="n">t</span><span class="p">,</span>
+        <span class="n">time</span><span class="p">,</span>
         <span class="mi">0</span><span class="p">,</span>
         <span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="c1"># Inverse Fourier transform</span>
+    <span class="c1"># Handle scalar time values</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-        <span class="n">DeltaQ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-        <span class="n">DeltaQ</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">_StehfestCoeff</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NSteh1</span><span class="p">)</span> <span class="o">*</span> <span class="n">_if1_dQ</span><span class="p">(</span>
-            <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># Compute for scalar time</span>
+        <span class="n">DeltaQ</span> <span class="o">=</span> <span class="n">_StehfestCoeff</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NSteh1</span><span class="p">)</span> <span class="o">*</span> <span class="n">_if1_dQ</span><span class="p">(</span>
+            <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span>
         <span class="p">)</span>
         <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">NSteh1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">DeltaQ</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">_StehfestCoeff</span><span class="p">(</span><span class="n">jj</span><span class="p">,</span> <span class="n">NSteh1</span><span class="p">)</span> <span class="o">*</span> <span class="n">_if1_dQ</span><span class="p">(</span>
-                <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">jj</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">DeltaQ</span> <span class="o">+=</span> <span class="n">_StehfestCoeff</span><span class="p">(</span><span class="n">jj</span><span class="p">,</span> <span class="n">NSteh1</span><span class="p">)</span> <span class="o">*</span> <span class="n">_if1_dQ</span><span class="p">(</span>
+                <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">jj</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span>
             <span class="p">)</span>
-        <span class="n">DeltaQ</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">lambd</span> <span class="o">*</span> <span class="n">DeltaQ</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="p">)</span>
+        <span class="n">DeltaQ</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">lambd</span> <span class="o">*</span> <span class="n">DeltaQ</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span>
+        <span class="k">return</span> <span class="n">DeltaQ</span> <span class="o">*</span> <span class="n">Q</span>  <span class="c1"># redimensionalize</span>
 
-        <span class="k">return</span> <span class="n">DeltaQ</span> <span class="o">*</span> <span class="n">Q</span>  <span class="c1"># redimentionalize</span></div>
+    <span class="c1"># Handle array/list time values</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">DeltaQ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">DeltaQ</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">_StehfestCoeff</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NSteh1</span><span class="p">)</span> <span class="o">*</span> <span class="n">_if1_dQ</span><span class="p">(</span>
+        <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">NSteh1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">DeltaQ</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">_StehfestCoeff</span><span class="p">(</span><span class="n">jj</span><span class="p">,</span> <span class="n">NSteh1</span><span class="p">)</span> <span class="o">*</span> <span class="n">_if1_dQ</span><span class="p">(</span>
+            <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">jj</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="n">DeltaQ</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">lambd</span> <span class="o">*</span> <span class="n">DeltaQ</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">DeltaQ</span> <span class="o">*</span> <span class="n">Q</span>  <span class="c1"># redimensionalize</span></div>
 
 
 <span class="k">def</span> <span class="nf">_if1_dQ</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
@@ -1464,7 +1476,7 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Nov 30, 2025.
+      <span class="lastupdated">Last updated on Dec 05, 2025.
       </span></p>
   </div>
 
