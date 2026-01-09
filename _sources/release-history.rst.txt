@@ -34,3 +34,10 @@ Version 1.1.2 (2025-12-06)
     * change variable name for time from `t` to `time` for consistency with other solultions
     * accomodate a single scalar time at which to calculate
 
+Version 1.2.0 (2026-01-10)
+--------------------------
+* Refactoring to properly name the Dudley Ward and Lough functions
+    * Recognized we were erroneously referring to the Dudley Ward and Lough solution as simply Ward and Lough. Refactored to change the spelling in comments and function names.
+    * solution `ward_lough_drawdown` is now `dudley_ward_lough_drawdown`
+    * solution `ward_lough_depletion` is now `dudley_ward_lough_depletion`
+    

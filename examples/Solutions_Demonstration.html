@@ -68,7 +68,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#Theis-Drawdown">Theis Drawdown</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Ward-Lough-2-Layer-Drawdown">Ward-Lough 2-Layer Drawdown</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Dudley-Ward-Lough-2-Layer-Drawdown">Dudley Ward-Lough 2-Layer Drawdown</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#We-need-a-couple-more-variables-(assuming-the-previously-defined-variables-pertain-to-the-upper-aquifer,-then-the-lower-aquifer-is-defined-by-T2,S2,-etc.)-and-river-and-aquitard-characterstics.">We need a couple more variables (assuming the previously defined variables pertain to the upper aquifer, then the lower aquifer is defined by T2,S2, etc.) and river and aquitard characterstics.</a></li>
 </ul>
 </li>
@@ -77,7 +77,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#Glover-Depletion">Glover Depletion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Ward-Lough-2-Layer-Depletion">Ward-Lough 2-Layer Depletion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Dudley-Ward-Lough-2-Layer-Depletion">Dudley Ward-Lough 2-Layer Depletion</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="WellClass_Demonstration.html">Demonstration of Well Class</a></li>
@@ -471,8 +471,8 @@ Text(0, 0.5, &#39;drawdown&#39;)
 </div>
 </div>
 </section>
-<section id="Ward-Lough-2-Layer-Drawdown">
-<h2>Ward-Lough 2-Layer Drawdown<a class="headerlink" href="#Ward-Lough-2-Layer-Drawdown" title="Permalink to this heading"></a></h2>
+<section id="Dudley-Ward-Lough-2-Layer-Drawdown">
+<h2>Dudley Ward-Lough 2-Layer Drawdown<a class="headerlink" href="#Dudley-Ward-Lough-2-Layer-Drawdown" title="Permalink to this heading"></a></h2>
 <section id="We-need-a-couple-more-variables-(assuming-the-previously-defined-variables-pertain-to-the-upper-aquifer,-then-the-lower-aquifer-is-defined-by-T2,S2,-etc.)-and-river-and-aquitard-characterstics.">
 <h3>We need a couple more variables (assuming the previously defined variables pertain to the upper aquifer, then the lower aquifer is defined by T2,S2, etc.) and river and aquitard characterstics.<a class="headerlink" href="#We-need-a-couple-more-variables-(assuming-the-previously-defined-variables-pertain-to-the-upper-aquifer,-then-the-lower-aquifer-is-defined-by-T2,S2,-etc.)-and-river-and-aquitard-characterstics." title="Permalink to this heading"></a></h3>
 <div class="nbinput nblast docutils container">
@@ -497,7 +497,7 @@ Text(0, 0.5, &#39;drawdown&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycap.solutions</span> <span class="kn">import</span> <span class="n">ward_lough_drawdown</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycap.solutions</span> <span class="kn">import</span> <span class="n">dudley_ward_lough_drawdown</span>
 </pre></div>
 </div>
 </div>
@@ -505,7 +505,7 @@ Text(0, 0.5, &#39;drawdown&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_wl</span> <span class="o">=</span> <span class="n">ward_lough_drawdown</span><span class="p">(</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_wl</span> <span class="o">=</span> <span class="n">dudley_ward_lough_drawdown</span><span class="p">(</span>
     <span class="n">T</span><span class="p">,</span>
     <span class="n">S</span><span class="p">,</span>
     <span class="n">time</span><span class="p">,</span>
@@ -648,13 +648,13 @@ Text(0, 0.5, &#39;depletion&#39;)
 </div>
 </div>
 </section>
-<section id="Ward-Lough-2-Layer-Depletion">
-<h2>Ward-Lough 2-Layer Depletion<a class="headerlink" href="#Ward-Lough-2-Layer-Depletion" title="Permalink to this heading"></a></h2>
+<section id="Dudley-Ward-Lough-2-Layer-Depletion">
+<h2>Dudley Ward-Lough 2-Layer Depletion<a class="headerlink" href="#Dudley-Ward-Lough-2-Layer-Depletion" title="Permalink to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycap.solutions</span> <span class="kn">import</span> <span class="n">ward_lough_depletion</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycap.solutions</span> <span class="kn">import</span> <span class="n">dudley_ward_lough_depletion</span>
 </pre></div>
 </div>
 </div>
@@ -662,7 +662,7 @@ Text(0, 0.5, &#39;depletion&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qd_wl</span> <span class="o">=</span> <span class="n">ward_lough_depletion</span><span class="p">(</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qd_wl</span> <span class="o">=</span> <span class="n">dudley_ward_lough_depletion</span><span class="p">(</span>
     <span class="n">T</span><span class="p">,</span>
     <span class="n">S</span><span class="p">,</span>
     <span class="n">time</span><span class="p">,</span>
@@ -730,7 +730,7 @@ Text(0, 0.5, &#39;depletion&#39;)
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Dec 15, 2025.
+      <span class="lastupdated">Last updated on Jan 09, 2026.
       </span></p>
   </div>
 

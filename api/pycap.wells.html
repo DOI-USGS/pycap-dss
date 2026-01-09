@@ -173,11 +173,42 @@ attributed to each. Defaults to None.</p>
 </dd>
 <dt><strong>drawdown_method: string, optional</strong></dt><dd><p>Method to be used for drawdown calculations. Defaults to ‘theis_drawdown’.
 Only ‘theis_drawdown’ is available right now in the Well() class, if
-Hunt (1999) or Ward and Lough (2014) are desired, the function
+Hunt (1999) or Dudley Ward and Lough (2014) are desired, the function
 must be called directly</p>
 </dd>
 <dt><strong>streambed_conductance: float</strong></dt><dd><p>Streambed conductance for the hunt_99_depletion depletion method [L/T].
 Defaults to None</p>
+</dd>
+<dt><strong>Additional Parameters Used by Hunt and Dudley Ward/Lough Solutions</strong></dt><dd></dd>
+<dt><strong>———————————————————–</strong></dt><dd></dd>
+<dt><strong>Bprime: float</strong></dt><dd><p>saturated thickness of semiconfining layer containing stream, [L]</p>
+</dd>
+<dt><strong>Bdouble: float</strong></dt><dd><p>distance from bottom of stream to bottom of semiconfining layer,
+[L] (aquitard thickness beneath the stream)</p>
+</dd>
+<dt><strong>aquitard_K: float</strong></dt><dd><p>hydraulic conductivity of semiconfining layer [L/T]</p>
+</dd>
+<dt><strong>sigma: float</strong></dt><dd><p>porosity of semiconfining layer</p>
+</dd>
+<dt><strong>width: float</strong></dt><dd><p>stream width [T]</p>
+</dd>
+<dt><strong>x: float</strong></dt><dd><p>x-coordinate of drawdown location
+(with origin being x=0 at stream location) [L]</p>
+</dd>
+<dt><strong>y: float</strong></dt><dd><p>y-coordinate of drawdown location
+(with origin being y=0 at pumping well location) [L]</p>
+</dd>
+<dt><strong>Additional Parameters Used by Dudley Ward/Lough Solutions</strong></dt><dd></dd>
+<dt><strong>————————————————–</strong></dt><dd></dd>
+<dt><strong>T2: float</strong></dt><dd><p>Transmissivity of deeper system</p>
+</dd>
+<dt><strong>S2: float</strong></dt><dd><p>Storativity of</p>
+</dd>
+<dt><strong>streambed_thick: float</strong></dt><dd><p>thickness of streambed</p>
+</dd>
+<dt><strong>streambed_K: float</strong></dt><dd><p>hydraulic conductivity of streambed, [L/T]</p>
+</dd>
+<dt><strong>aquitard_thick: float</strong></dt><dd><p>thickness of intervening leaky aquitard, [L]</p>
 </dd>
 </dl>
 </dd>
@@ -242,6 +273,37 @@ Defaults to -99999.</p>
 <dt><strong>streambed_conductance: float</strong></dt><dd><p>Streambed conductance for the hunt_99_depletion depletion method [L/T].
 Defaults to None</p>
 </dd>
+<dt><strong>Additional Parameters Used by Hunt and Dudley Ward/Lough Solutions</strong></dt><dd></dd>
+<dt><strong>———————————————————–</strong></dt><dd></dd>
+<dt><strong>Bprime: float</strong></dt><dd><p>saturated thickness of semiconfining layer containing stream, [L]</p>
+</dd>
+<dt><strong>Bdouble: float</strong></dt><dd><p>distance from bottom of stream to bottom of semiconfining layer,
+[L] (aquitard thickness beneath the stream)</p>
+</dd>
+<dt><strong>aquitard_K: float</strong></dt><dd><p>hydraulic conductivity of semiconfining layer [L/T]</p>
+</dd>
+<dt><strong>sigma: float</strong></dt><dd><p>porosity of semiconfining layer</p>
+</dd>
+<dt><strong>width: float</strong></dt><dd><p>stream width [T]</p>
+</dd>
+<dt><strong>x: float</strong></dt><dd><p>x-coordinate of drawdown location
+(with origin being x=0 at stream location) [L]</p>
+</dd>
+<dt><strong>y: float</strong></dt><dd><p>y-coordinate of drawdown location
+(with origin being y=0 at pumping well location) [L]</p>
+</dd>
+<dt><strong>Additional Parameters Used by Dudley Ward/Lough Solutions</strong></dt><dd></dd>
+<dt><strong>————————————————–</strong></dt><dd></dd>
+<dt><strong>T2: float</strong></dt><dd><p>Transmissivity of deeper system</p>
+</dd>
+<dt><strong>S2: float</strong></dt><dd><p>Storativity of</p>
+</dd>
+<dt><strong>streambed_thick: float</strong></dt><dd><p>thickness of streambed</p>
+</dd>
+<dt><strong>streambed_K: float</strong></dt><dd><p>hydraulic conductivity of streambed, [L/T]</p>
+</dd>
+<dt><strong>aquitard_thick: float</strong></dt><dd><p>thickness of intervening leaky aquitard, [L]</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -271,7 +333,7 @@ Defaults to None</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Dec 15, 2025.
+      <span class="lastupdated">Last updated on Jan 09, 2026.
       </span></p>
   </div>
 

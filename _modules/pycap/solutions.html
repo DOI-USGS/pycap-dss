@@ -408,7 +408,7 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">sps</span><span class="o">.</span><span class="n">exp1</span><span class="p">(</span><span class="n">u2</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="ward_lough_drawdown"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.ward_lough_drawdown">[docs]</a><span class="k">def</span> <span class="nf">ward_lough_drawdown</span><span class="p">(</span>
+<div class="viewcode-block" id="dudley_ward_lough_drawdown"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.dudley_ward_lough_drawdown">[docs]</a><span class="k">def</span> <span class="nf">dudley_ward_lough_drawdown</span><span class="p">(</span>
     <span class="n">T1</span><span class="p">,</span>
     <span class="n">S1</span><span class="p">,</span>
     <span class="n">time</span><span class="p">,</span>
@@ -427,15 +427,15 @@
     <span class="n">NSteh2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute drawdown using Ward and Lough (2011) solution</span>
+    <span class="sd">&quot;&quot;&quot;Compute drawdown using Dudley Ward and Lough (2011) solution</span>
 
-<span class="sd">        Ward and Lough (2011) presented a solution for streamflow depletion</span>
+<span class="sd">        Dudley Ward and Lough (2011) presented a solution for streamflow depletion</span>
 <span class="sd">        by a pumping well in a layered aquifer system.  The stream</span>
 <span class="sd">        is in the upper aquifer, and the pumping well is in a lower</span>
 <span class="sd">        aquifer that is separated from the upper aquifer by a</span>
 <span class="sd">        semi-confining aquitard layer.</span>
 
-<span class="sd">        Ward, N.D.,and Lough, H., 2011, Stream depletion from pumping a</span>
+<span class="sd">        Dudley Ward, N.,and Lough, H., 2011, Stream depletion from pumping a</span>
 <span class="sd">        semiconfined aquifer in a two-layer leaky aquifer system (technical note):</span>
 <span class="sd">        Journal of Hydrologic Engineering ASCE, v. 16, no. 11, pgs. 955-959,</span>
 <span class="sd">        https://doi.org/10.1061/(ASCE)HE.1943-5584.0000382.</span>
@@ -497,12 +497,12 @@
     <span class="n">dist</span> <span class="o">=</span> <span class="n">_make_arrays</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">PycapException</span><span class="p">(</span>
-            <span class="s2">&quot;ward_lough_drawdown can only accept a single distance argument&quot;</span>
+            <span class="s2">&quot;dudley_ward_lough_drawdown can only accept a single distance argument&quot;</span>
         <span class="p">)</span>
     <span class="n">_check_nones</span><span class="p">(</span>
         <span class="nb">locals</span><span class="p">(),</span>
         <span class="p">{</span>
-            <span class="s2">&quot;ward_lough_drawdown&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;dudley_ward_lough_drawdown&quot;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s2">&quot;T2&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;S2&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;width&quot;</span><span class="p">,</span>
@@ -517,7 +517,7 @@
     <span class="p">)</span>
 
     <span class="c1"># first nondimensionalize all the parameters</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span> <span class="o">=</span> <span class="n">_WardLoughNonDimensionalize</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span> <span class="o">=</span> <span class="n">_DudleyWardLoughNonDimensionalize</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span>
         <span class="n">T2</span><span class="p">,</span>
         <span class="n">S1</span><span class="p">,</span>
@@ -1104,7 +1104,7 @@
     <span class="k">return</span> <span class="n">deltaQ</span>
 
 
-<span class="k">def</span> <span class="nf">_WardLoughNonDimensionalize</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">_DudleyWardLoughNonDimensionalize</span><span class="p">(</span>
     <span class="n">T1</span><span class="p">,</span>
     <span class="n">T2</span><span class="p">,</span>
     <span class="n">S1</span><span class="p">,</span>
@@ -1120,7 +1120,7 @@
     <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function to make non-dimensional groups for Ward and Lough solution&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Internal function to make non-dimensional groups for Dudley Ward and Lough solution&quot;&quot;&quot;</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># make sure not passing a list</span>
     <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">/=</span> <span class="n">dist</span>
@@ -1134,7 +1134,7 @@
     <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span>
 
 
-<div class="viewcode-block" id="ward_lough_depletion"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.ward_lough_depletion">[docs]</a><span class="k">def</span> <span class="nf">ward_lough_depletion</span><span class="p">(</span>
+<div class="viewcode-block" id="dudley_ward_lough_depletion"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.dudley_ward_lough_depletion">[docs]</a><span class="k">def</span> <span class="nf">dudley_ward_lough_depletion</span><span class="p">(</span>
     <span class="n">T1</span><span class="p">,</span>
     <span class="n">S1</span><span class="p">,</span>
     <span class="n">time</span><span class="p">,</span>
@@ -1151,15 +1151,15 @@
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute streamflow depletion using Ward and Lough (2011) solution</span>
+<span class="sd">    Compute streamflow depletion using Dudley Ward and Lough (2011) solution</span>
 
-<span class="sd">    Ward and Lough (2011) presented a solution for streamflow depletion</span>
+<span class="sd">    Dudley Ward and Lough (2011) presented a solution for streamflow depletion</span>
 <span class="sd">    by a pumping well in a layered aquifer system.  The stream</span>
 <span class="sd">    is in the upper aquifer, and the pumping well is in a lower</span>
 <span class="sd">    aquifer that is separated from the upper aquifer by a</span>
 <span class="sd">    semi-confining aquitard layer.</span>
 
-<span class="sd">    Ward, N.D.,and Lough, H., 2011, Stream depletion from pumping a</span>
+<span class="sd">    Dudley Ward, N.,and Lough, H., 2011, Stream depletion from pumping a</span>
 <span class="sd">    semiconfined aquifer in a two-layer leaky aquifer system (techical note):</span>
 <span class="sd">    Journal of Hydrologic Engineering ASCE, v. 16, no. 11, pgs. 955-959,</span>
 <span class="sd">    https://doi.org/10.1061/(ASCE)HE.1943-5584.0000382.</span>
@@ -1209,7 +1209,7 @@
     <span class="n">_check_nones</span><span class="p">(</span>
         <span class="nb">locals</span><span class="p">(),</span>
         <span class="p">{</span>
-            <span class="s2">&quot;ward_lough_depletion&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;dudley_ward_lough_depletion&quot;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s2">&quot;T2&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;S2&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;width&quot;</span><span class="p">,</span>
@@ -1221,7 +1221,7 @@
         <span class="p">},</span>
     <span class="p">)</span>
     <span class="c1"># first nondimensionalize all the parameters</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span> <span class="o">=</span> <span class="n">_WardLoughNonDimensionalize</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span> <span class="o">=</span> <span class="n">_DudleyWardLoughNonDimensionalize</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span>
         <span class="n">T2</span><span class="p">,</span>
         <span class="n">S1</span><span class="p">,</span>
@@ -1273,14 +1273,14 @@
 
 
 <span class="k">def</span> <span class="nf">_if1_dQ</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_kernel1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">_kernel2</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">p</span>
     <span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_if1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">G</span> <span class="o">=</span> <span class="p">(</span>
         <span class="k">lambda</span> <span class="n">phi</span><span class="p">:</span> <span class="mi">2</span>
         <span class="o">*</span> <span class="p">(</span>
@@ -1298,7 +1298,7 @@
 
 
 <span class="k">def</span> <span class="nf">_if2</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">H</span> <span class="o">=</span> <span class="p">(</span>
         <span class="k">lambda</span> <span class="n">phi</span><span class="p">:</span> <span class="mi">2</span>
         <span class="o">*</span> <span class="p">(</span>
@@ -1318,7 +1318,7 @@
 
 
 <span class="k">def</span> <span class="nf">_coeff_s1_1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">b11</span><span class="p">,</span> <span class="n">b12</span><span class="p">,</span> <span class="n">b22</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">A2</span> <span class="o">=</span> <span class="n">_coeffs</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p</span>
     <span class="p">)</span>
@@ -1327,7 +1327,7 @@
 
 
 <span class="k">def</span> <span class="nf">_coeff_s1_2</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">b11</span><span class="p">,</span> <span class="n">b12</span><span class="p">,</span> <span class="n">b22</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">A2</span> <span class="o">=</span> <span class="n">_coeffs</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p</span>
     <span class="p">)</span>
@@ -1336,7 +1336,7 @@
 
 
 <span class="k">def</span> <span class="nf">_kernel1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">b11</span><span class="p">,</span> <span class="n">b12</span><span class="p">,</span> <span class="n">b22</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">A2</span> <span class="o">=</span> <span class="n">_coeffs</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span>
     <span class="p">)</span>
@@ -1355,7 +1355,7 @@
 
 
 <span class="k">def</span> <span class="nf">_kernel2</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">b11</span><span class="p">,</span> <span class="n">b12</span><span class="p">,</span> <span class="n">b22</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">A2</span> <span class="o">=</span> <span class="n">_coeffs</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span>
     <span class="p">)</span>
@@ -1374,7 +1374,7 @@
 
 
 <span class="k">def</span> <span class="nf">_coeffs</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">b11</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">theta_or_y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">S1</span> <span class="o">*</span> <span class="n">p</span> <span class="o">+</span> <span class="n">K</span>
     <span class="n">b12</span> <span class="o">=</span> <span class="o">-</span><span class="n">K</span>
     <span class="n">b22</span> <span class="o">=</span> <span class="n">theta_or_y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">p</span> <span class="o">+</span> <span class="n">K</span>
@@ -1427,7 +1427,7 @@
 
 
 <span class="k">def</span> <span class="nf">_StehfestCoeff</span><span class="p">(</span><span class="n">jj</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">LowerLimit</span> <span class="o">=</span> <span class="p">(</span><span class="n">jj</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
     <span class="n">UpperLimit</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">jj</span><span class="p">,</span> <span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
 
@@ -1452,7 +1452,7 @@
 <span class="n">ALL_DD_METHODS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;theis_drawdown&quot;</span><span class="p">:</span> <span class="n">theis_drawdown</span><span class="p">,</span>
     <span class="s2">&quot;hunt_99_drawdown&quot;</span><span class="p">:</span> <span class="n">hunt_99_drawdown</span><span class="p">,</span>
-    <span class="s2">&quot;ward_lough_drawdown&quot;</span><span class="p">:</span> <span class="n">ward_lough_drawdown</span><span class="p">,</span>
+    <span class="s2">&quot;dudley_ward_lough_drawdown&quot;</span><span class="p">:</span> <span class="n">dudley_ward_lough_drawdown</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">ALL_DEPL_METHODS</span> <span class="o">=</span> <span class="p">{</span>
@@ -1460,7 +1460,7 @@
     <span class="s2">&quot;walton_depletion&quot;</span><span class="p">:</span> <span class="n">walton_depletion</span><span class="p">,</span>
     <span class="s2">&quot;hunt_99_depletion&quot;</span><span class="p">:</span> <span class="n">hunt_99_depletion</span><span class="p">,</span>
     <span class="s2">&quot;hunt_03_depletion&quot;</span><span class="p">:</span> <span class="n">hunt_03_depletion</span><span class="p">,</span>
-    <span class="s2">&quot;ward_lough_depletion&quot;</span><span class="p">:</span> <span class="n">ward_lough_depletion</span><span class="p">,</span>
+    <span class="s2">&quot;dudley_ward_lough_depletion&quot;</span><span class="p">:</span> <span class="n">dudley_ward_lough_depletion</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">GPM2CFD</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">/</span> <span class="mf">7.48</span>  <span class="c1"># factor to convert from GPM to CFD</span>
@@ -1476,7 +1476,7 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Dec 15, 2025.
+      <span class="lastupdated">Last updated on Jan 09, 2026.
       </span></p>
   </div>
 
