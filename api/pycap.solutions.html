@@ -311,7 +311,7 @@ v. 35, no. 3, pg. 468-470, <a class="reference external" href="https://doi.org/1
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pycap.solutions.hunt_03_depletion">
-<span class="sig-prename descclassname"><span class="pre">pycap.solutions.</span></span><span class="sig-name descname"><span class="pre">hunt_03_depletion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bprime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bdouble</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aquitard_K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">streambed_conductance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycap/solutions.html#hunt_03_depletion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycap.solutions.hunt_03_depletion" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">pycap.solutions.</span></span><span class="sig-name descname"><span class="pre">hunt_03_depletion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bprime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bdouble</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aquitard_K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">streambed_conductance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_quad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycap/solutions.html#hunt_03_depletion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycap.solutions.hunt_03_depletion" title="Permalink to this definition"></a></dt>
 <dd><p>Function for Hunt (2003) solution for streamflow depletion by a pumping well.</p>
 <blockquote>
 <div><p>Computes streamflow depletion by a pumping well in a semiconfined aquifer
@@ -357,10 +357,13 @@ depending on input of time and dist [L**3/T]</p>
 </dd>
 <dt><strong>sigma: float</strong></dt><dd><p>porosity of semiconfining layer</p>
 </dd>
-<dt><strong>width: float</strong></dt><dd><p>stream width (b in paper) [T]</p>
+<dt><strong>width: float</strong></dt><dd><p>stream width (b in paper) [L]</p>
 </dd>
 <dt><strong>streambed_conductance: float</strong></dt><dd><p>streambed conductance [L/T] (lambda in the paper),
 only used if K is less than 1e-10</p>
+</dd>
+<dt><strong>n_quad: int, optional</strong></dt><dd><p>number of Gauss-Legendre quadrature points for numerical integration
+(default: 100)</p>
 </dd>
 </dl>
 </dd>
@@ -579,7 +582,7 @@ is unit-specific, using feet and days as dimensions.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Jan 12, 2026.
+      <span class="lastupdated">Last updated on Jan 20, 2026.
       </span></p>
   </div>
 
