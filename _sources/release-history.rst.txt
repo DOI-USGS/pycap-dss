@@ -40,4 +40,10 @@ Version 1.2.0 (2026-01-10)
     * Recognized we were erroneously referring to the Dudley Ward and Lough solution as simply Ward and Lough. Refactored to change the spelling in comments and function names.
     * solution `ward_lough_drawdown` is now `dudley_ward_lough_drawdown`
     * solution `ward_lough_depletion` is now `dudley_ward_lough_depletion`
-    
+
+Version 1.2.5 (2026-01-20)
+--------------------------
+* Performance enhancements to Hunt (2003) solutions. 
+    * precalculation of some constants and tuning of numerical integral
+    * vectorization of some calculations
+    * no syntax changes necessary for use
