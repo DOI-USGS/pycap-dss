@@ -47,3 +47,9 @@ Version 1.2.5 (2026-01-20)
     * precalculation of some constants and tuning of numerical integral
     * vectorization of some calculations
     * no syntax changes necessary for use
+
+Version 1.3.0 (2026-01-30)
+--------------------------
+* Performance enhancements to all depletion solutions. 
+    * precalculation of a unit pumping response precedes multiplication rather than full depletion calculation to fill out pumping time series
+    * no syntax changes necessary for use
