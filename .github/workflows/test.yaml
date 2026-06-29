@@ -23,7 +23,7 @@ jobs:
 
 
     - name: Cache Miniconda
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       env:
         # Increase this value to reset cache if environment.yml has changed
         CACHE_NUMBER: 0
