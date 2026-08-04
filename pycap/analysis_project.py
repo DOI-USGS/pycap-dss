@@ -204,7 +204,9 @@ class Project:
             # first test, if there is a time series file that all well keys are columns
             if self.ts is True:
                 try:
-                    assert all([i in self.Q_ts.columns for i in self.wellkeys])
+                    # assert all([i in self.Q_ts.columns for i in self.wellkeys])
+                    assert all([d[i]["name"] in self.Q_ts.columns for i in self.wellkeys])
+
                 except:
                     raise AssertionError(
                         "not all well names are represented in the time series file"
