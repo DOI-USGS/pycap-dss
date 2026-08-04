@@ -53,3 +53,9 @@ Version 1.3.0 (2026-01-30)
 * Performance enhancements to all depletion solutions. 
     * precalculation of a unit pumping response precedes multiplication rather than full depletion calculation to fill out pumping time series
     * no syntax changes necessary for use
+
+Version 1.3.1 (2026-08-04)
+--------------------------
+* Minor bugfixes. 
+    * fix failing assert when using time series pumping with AnalysisProject
+    * some CI changes for performance
