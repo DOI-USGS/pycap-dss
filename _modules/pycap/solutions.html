@@ -1,26 +1,25 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pycap.solutions &mdash; pycap-dss  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/plot_directive.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -31,11 +30,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> pycap-dss
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            pycap-dss
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -78,7 +81,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
       <li class="breadcrumb-item active">pycap.solutions</li>
       <li class="wy-breadcrumbs-aside">
@@ -90,19 +93,19 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pycap.solutions</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">scipy.integrate</span> <span class="k">as</span> <span class="nn">integrate</span>
-<span class="kn">import</span> <span class="nn">scipy.special</span> <span class="k">as</span> <span class="nn">sps</span>
-<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">gammaln</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">integrate</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">gammaln</span>
 
-<span class="kn">from</span> <span class="nn">pycap.pycap_exceptions</span> <span class="kn">import</span> <span class="n">PycapException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycap.pycap_exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">PycapException</span>
 
 
-<span class="k">def</span> <span class="nf">_time_dist_error</span><span class="p">(</span><span class="n">funcname</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Function for trying to call both time and distance</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_time_dist_error</span><span class="p">(</span><span class="n">funcname</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function for trying to call both time and distance</span>
 <span class="sd">    as arrays in a function</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">raise</span> <span class="n">PycapException</span><span class="p">(</span>
@@ -112,8 +115,8 @@
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_make_arrays</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;private function to force values to</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_make_arrays</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;private function to force values to</span>
 <span class="sd">    arrays from lists or scalars</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
@@ -131,8 +134,8 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 
-<span class="k">def</span> <span class="nf">_check_nones</span><span class="p">(</span><span class="n">all_vars</span><span class="p">,</span> <span class="n">var_dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Function to check if any of the required parameters are</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_check_nones</span><span class="p">(</span><span class="n">all_vars</span><span class="p">,</span> <span class="n">var_dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to check if any of the required parameters are</span>
 <span class="sd">    set to None (default) value. Call to this function</span>
 <span class="sd">    is added to all solutions that require parameters in</span>
 <span class="sd">    addition to T, S, time, dist and Q.</span>
@@ -163,8 +166,10 @@
 
 
 <span class="c1"># define drawdown methods here</span>
-<div class="viewcode-block" id="theis_drawdown"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.theis_drawdown">[docs]</a><span class="k">def</span> <span class="nf">theis_drawdown</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Function to calculate Theis drawdown. Units are not specified, but</span>
+<div class="viewcode-block" id="theis_drawdown">
+<a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.theis_drawdown">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">theis_drawdown</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to calculate Theis drawdown. Units are not specified, but</span>
 <span class="sd">        should be consistent length and time.</span>
 
 <span class="sd">        Calculates the Theis drawdown solution at specified times</span>
@@ -219,10 +224,13 @@
         <span class="k">return</span> <span class="n">ddn</span></div>
 
 
-<div class="viewcode-block" id="hunt_99_drawdown"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.hunt_99_drawdown">[docs]</a><span class="k">def</span> <span class="nf">hunt_99_drawdown</span><span class="p">(</span>
+
+<div class="viewcode-block" id="hunt_99_drawdown">
+<a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.hunt_99_drawdown">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hunt_99_drawdown</span><span class="p">(</span>
     <span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">streambed_conductance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Function to calculate drawdown in an aquifer with a partially</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to calculate drawdown in an aquifer with a partially</span>
 <span class="sd">        penetrating stream including streambed resistance (Hunt, 1999).</span>
 <span class="sd">        Units are not specified, but should be consistent length and time.</span>
 
@@ -373,8 +381,9 @@
         <span class="k">return</span> <span class="n">drawdowns</span></div>
 
 
-<span class="k">def</span> <span class="nf">_ddwn1</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">streambed</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal method to calculate Theis drawdown function for a point (x,y)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ddwn1</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">streambed</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal method to calculate Theis drawdown function for a point (x,y)</span>
 
 <span class="sd">    Used in computing Hunt, 1999 estimate of drawdown.  Equation 30 from</span>
 <span class="sd">    the paper.  Variables described in hunt_99_drawdown function.</span>
@@ -392,8 +401,8 @@
     <span class="k">return</span> <span class="n">sps</span><span class="o">.</span><span class="n">exp1</span><span class="p">(</span><span class="n">u1</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_ddwn2</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">streambed</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal method to calculate function that gets integrated</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_ddwn2</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">streambed</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal method to calculate function that gets integrated</span>
 <span class="sd">        in the Hunt (1999) solution</span>
 
 <span class="sd">    Equations 29 and 30 in the paper, theta is the constant</span>
@@ -408,7 +417,9 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">sps</span><span class="o">.</span><span class="n">exp1</span><span class="p">(</span><span class="n">u2</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="dudley_ward_lough_drawdown"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.dudley_ward_lough_drawdown">[docs]</a><span class="k">def</span> <span class="nf">dudley_ward_lough_drawdown</span><span class="p">(</span>
+<div class="viewcode-block" id="dudley_ward_lough_drawdown">
+<a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.dudley_ward_lough_drawdown">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">dudley_ward_lough_drawdown</span><span class="p">(</span>
     <span class="n">T1</span><span class="p">,</span>
     <span class="n">S1</span><span class="p">,</span>
     <span class="n">time</span><span class="p">,</span>
@@ -427,7 +438,7 @@
     <span class="n">NSteh2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute drawdown using Dudley Ward and Lough (2011) solution</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute drawdown using Dudley Ward and Lough (2011) solution</span>
 
 <span class="sd">        Dudley Ward and Lough (2011) presented a solution for streamflow depletion</span>
 <span class="sd">        by a pumping well in a layered aquifer system.  The stream</span>
@@ -574,9 +585,12 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">s1</span> <span class="o">*</span> <span class="n">Q</span> <span class="o">/</span> <span class="n">T2</span><span class="p">,</span> <span class="n">s2</span> <span class="o">*</span> <span class="n">Q</span> <span class="o">/</span> <span class="n">T2</span><span class="p">)))</span>  <span class="c1"># re-dimensionalize</span></div>
 
 
+
 <span class="c1"># define stream depletion methods here</span>
-<div class="viewcode-block" id="glover_depletion"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.glover_depletion">[docs]</a><span class="k">def</span> <span class="nf">glover_depletion</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="glover_depletion">
+<a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.glover_depletion">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">glover_depletion</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate Glover and Balmer (1954) solution for stream depletion</span>
 
 <span class="sd">    Depletion solution for a well near a river where the river fully</span>
@@ -635,8 +649,11 @@
         <span class="k">return</span> <span class="n">depl</span></div>
 
 
-<div class="viewcode-block" id="sdf"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.sdf">[docs]</a><span class="k">def</span> <span class="nf">sdf</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="sdf">
+<a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.sdf">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sdf</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    internal function for Stream Depletion Factor</span>
 
 <span class="sd">    Stream Depletion Factor was defined by Jenkins (1968) and described</span>
@@ -668,8 +685,11 @@
     <span class="k">return</span> <span class="n">dist</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">S</span> <span class="o">/</span> <span class="n">T</span></div>
 
 
-<div class="viewcode-block" id="walton_depletion"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.walton_depletion">[docs]</a><span class="k">def</span> <span class="nf">walton_depletion</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="walton_depletion">
+<a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.walton_depletion">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">walton_depletion</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate depletion using Walton (1987) PT-8 BASIC program logic</span>
 
 <span class="sd">    Provides the Glover and Balmer (Jenkins) solution.</span>
@@ -737,10 +757,13 @@
             <span class="k">return</span> <span class="n">depl</span></div>
 
 
-<div class="viewcode-block" id="hunt_99_depletion"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.hunt_99_depletion">[docs]</a><span class="k">def</span> <span class="nf">hunt_99_depletion</span><span class="p">(</span>
+
+<div class="viewcode-block" id="hunt_99_depletion">
+<a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.hunt_99_depletion">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hunt_99_depletion</span><span class="p">(</span>
     <span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">streambed_conductance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Function for Hunt (1999) solution for streamflow depletion by a pumping well.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function for Hunt (1999) solution for streamflow depletion by a pumping well.</span>
 
 <span class="sd">        Computes streamflow depletion by a pumping well for a partially penetrating</span>
 <span class="sd">        stream with streambed resistance.</span>
@@ -812,7 +835,10 @@
         <span class="k">return</span> <span class="n">depl</span> <span class="o">*</span> <span class="n">Q</span></div>
 
 
-<div class="viewcode-block" id="hunt_03_depletion"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.hunt_03_depletion">[docs]</a><span class="k">def</span> <span class="nf">hunt_03_depletion</span><span class="p">(</span>
+
+<div class="viewcode-block" id="hunt_03_depletion">
+<a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.hunt_03_depletion">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hunt_03_depletion</span><span class="p">(</span>
     <span class="n">T</span><span class="p">,</span>
     <span class="n">S</span><span class="p">,</span>
     <span class="n">time</span><span class="p">,</span>
@@ -827,7 +853,7 @@
     <span class="n">n_quad</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Function for Hunt (2003) solution for streamflow depletion by a pumping well.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function for Hunt (2003) solution for streamflow depletion by a pumping well.</span>
 
 <span class="sd">        Computes streamflow depletion by a pumping well in a semiconfined aquifer</span>
 <span class="sd">        for a partially penetrating stream.  The stream is in an upper semi-confining</span>
@@ -953,6 +979,7 @@
         <span class="k">return</span> <span class="n">Q</span> <span class="o">*</span> <span class="p">(</span><span class="n">depl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">correction</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Q</span> <span class="o">*</span> <span class="p">(</span><span class="n">depl</span> <span class="o">-</span> <span class="n">correction</span><span class="p">)</span></div>
+
 <span class="c1"># Pre-compute binomial coefficients for n = 0 to 59</span>
 <span class="c1"># binom(2n, n) for the series in _G</span>
 <span class="n">_MAX_N</span> <span class="o">=</span> <span class="mi">60</span>
@@ -978,8 +1005,8 @@
 <span class="n">_QUAD_CACHE</span> <span class="o">=</span> <span class="p">{</span><span class="n">_DEFAULT_N_QUAD</span><span class="p">:</span> <span class="p">(</span><span class="n">_ALPHA_DEFAULT</span><span class="p">,</span> <span class="n">_WEIGHTS_DEFAULT</span><span class="p">)}</span>
 
 
-<span class="k">def</span> <span class="nf">_get_gauss_legendre</span><span class="p">(</span><span class="n">n_quad</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get cached Gauss-Legendre quadrature points and weights for [0, 1].&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_gauss_legendre</span><span class="p">(</span><span class="n">n_quad</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get cached Gauss-Legendre quadrature points and weights for [0, 1].&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">n_quad</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_QUAD_CACHE</span><span class="p">:</span>
         <span class="n">x_gl</span><span class="p">,</span> <span class="n">w_gl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">legendre</span><span class="o">.</span><span class="n">leggauss</span><span class="p">(</span><span class="n">n_quad</span><span class="p">)</span>
         <span class="c1"># Transform from [-1, 1] to [0, 1]</span>
@@ -989,8 +1016,8 @@
     <span class="k">return</span> <span class="n">_QUAD_CACHE</span><span class="p">[</span><span class="n">n_quad</span><span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">_compute_correction</span><span class="p">(</span><span class="n">dtime_array</span><span class="p">,</span> <span class="n">dlam</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">dK</span><span class="p">,</span> <span class="n">n_quad</span><span class="o">=</span><span class="n">_DEFAULT_N_QUAD</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_compute_correction</span><span class="p">(</span><span class="n">dtime_array</span><span class="p">,</span> <span class="n">dlam</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">dK</span><span class="p">,</span> <span class="n">n_quad</span><span class="o">=</span><span class="n">_DEFAULT_N_QUAD</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the correction term for all time points using vectorized operations.</span>
 
 <span class="sd">    Parameters</span>
@@ -1027,8 +1054,8 @@
     <span class="k">return</span> <span class="n">corrections</span>
 
 
-<span class="k">def</span> <span class="nf">_G</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">dK</span><span class="p">,</span> <span class="n">dtime</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_G</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">dK</span><span class="p">,</span> <span class="n">dtime</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Vectorized G function from Hunt (2003) equation (46).</span>
 <span class="sd">    </span>
 <span class="sd">    This implementation eliminates the Python loop over n by using</span>
@@ -1133,8 +1160,8 @@
     <span class="k">return</span> <span class="n">eqn52</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">scalar_input</span> <span class="k">else</span> <span class="n">eqn52</span>
 
 
-<span class="k">def</span> <span class="nf">_F</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">dlam</span><span class="p">,</span> <span class="n">dtime</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Vectorized F function from Hunt (2003) equation (47).</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_F</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">dlam</span><span class="p">,</span> <span class="n">dtime</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vectorized F function from Hunt (2003) equation (47).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1186,13 +1213,13 @@
     <span class="k">return</span> <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">scalar_input</span> <span class="k">else</span> <span class="n">F</span>
 
 
-<span class="k">def</span> <span class="nf">_integrand</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">dlam</span><span class="p">,</span> <span class="n">dtime</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">dK</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Vectorized integrand F(alpha) * G(alpha) for numerical integration.&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_integrand</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">dlam</span><span class="p">,</span> <span class="n">dtime</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">dK</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vectorized integrand F(alpha) * G(alpha) for numerical integration.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_F</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">dlam</span><span class="p">,</span> <span class="n">dtime</span><span class="p">)</span> <span class="o">*</span> <span class="n">_G</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">dK</span><span class="p">,</span> <span class="n">dtime</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_calc_deltaQ</span><span class="p">(</span><span class="n">Q</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;internal function to parse the Q time series to find changes and their associated times</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_calc_deltaQ</span><span class="p">(</span><span class="n">Q</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;internal function to parse the Q time series to find changes and their associated times</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1216,7 +1243,7 @@
     <span class="k">return</span> <span class="n">deltaQ</span>
 
 
-<span class="k">def</span> <span class="nf">_DudleyWardLoughNonDimensionalize</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_DudleyWardLoughNonDimensionalize</span><span class="p">(</span>
     <span class="n">T1</span><span class="p">,</span>
     <span class="n">T2</span><span class="p">,</span>
     <span class="n">S1</span><span class="p">,</span>
@@ -1232,7 +1259,7 @@
     <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function to make non-dimensional groups for Dudley Ward and Lough solution&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal function to make non-dimensional groups for Dudley Ward and Lough solution&quot;&quot;&quot;</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># make sure not passing a list</span>
     <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">/=</span> <span class="n">dist</span>
@@ -1246,7 +1273,9 @@
     <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span>
 
 
-<div class="viewcode-block" id="dudley_ward_lough_depletion"><a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.dudley_ward_lough_depletion">[docs]</a><span class="k">def</span> <span class="nf">dudley_ward_lough_depletion</span><span class="p">(</span>
+<div class="viewcode-block" id="dudley_ward_lough_depletion">
+<a class="viewcode-back" href="../../api/pycap.solutions.html#pycap.solutions.dudley_ward_lough_depletion">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">dudley_ward_lough_depletion</span><span class="p">(</span>
     <span class="n">T1</span><span class="p">,</span>
     <span class="n">S1</span><span class="p">,</span>
     <span class="n">time</span><span class="p">,</span>
@@ -1262,7 +1291,7 @@
     <span class="n">NSteh1</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute streamflow depletion using Dudley Ward and Lough (2011) solution</span>
 
 <span class="sd">    Dudley Ward and Lough (2011) presented a solution for streamflow depletion</span>
@@ -1384,15 +1413,16 @@
     <span class="k">return</span> <span class="n">DeltaQ</span> <span class="o">*</span> <span class="n">Q</span>  <span class="c1"># redimensionalize</span></div>
 
 
-<span class="k">def</span> <span class="nf">_if1_dQ</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_if1_dQ</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_kernel1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">_kernel2</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">p</span>
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_if1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_if1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">G</span> <span class="o">=</span> <span class="p">(</span>
         <span class="k">lambda</span> <span class="n">phi</span><span class="p">:</span> <span class="mi">2</span>
         <span class="o">*</span> <span class="p">(</span>
@@ -1409,8 +1439,8 @@
     <span class="k">return</span> <span class="n">s1InvFour</span>
 
 
-<span class="k">def</span> <span class="nf">_if2</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_if2</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">H</span> <span class="o">=</span> <span class="p">(</span>
         <span class="k">lambda</span> <span class="n">phi</span><span class="p">:</span> <span class="mi">2</span>
         <span class="o">*</span> <span class="p">(</span>
@@ -1429,8 +1459,8 @@
     <span class="k">return</span> <span class="n">s2InvFour</span>
 
 
-<span class="k">def</span> <span class="nf">_coeff_s1_1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_coeff_s1_1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">b11</span><span class="p">,</span> <span class="n">b12</span><span class="p">,</span> <span class="n">b22</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">A2</span> <span class="o">=</span> <span class="n">_coeffs</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p</span>
     <span class="p">)</span>
@@ -1438,8 +1468,8 @@
     <span class="k">return</span> <span class="n">B1</span>
 
 
-<span class="k">def</span> <span class="nf">_coeff_s1_2</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_coeff_s1_2</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">b11</span><span class="p">,</span> <span class="n">b12</span><span class="p">,</span> <span class="n">b22</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">A2</span> <span class="o">=</span> <span class="n">_coeffs</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">p</span>
     <span class="p">)</span>
@@ -1447,8 +1477,8 @@
     <span class="k">return</span> <span class="n">B2</span>
 
 
-<span class="k">def</span> <span class="nf">_kernel1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_kernel1</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">b11</span><span class="p">,</span> <span class="n">b12</span><span class="p">,</span> <span class="n">b22</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">A2</span> <span class="o">=</span> <span class="n">_coeffs</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span>
     <span class="p">)</span>
@@ -1466,8 +1496,8 @@
     <span class="k">return</span> <span class="n">F1</span>
 
 
-<span class="k">def</span> <span class="nf">_kernel2</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_kernel2</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">b11</span><span class="p">,</span> <span class="n">b12</span><span class="p">,</span> <span class="n">b22</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">A2</span> <span class="o">=</span> <span class="n">_coeffs</span><span class="p">(</span>
         <span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span>
     <span class="p">)</span>
@@ -1485,8 +1515,8 @@
     <span class="k">return</span> <span class="n">F2</span>
 
 
-<span class="k">def</span> <span class="nf">_coeffs</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_coeffs</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">lambd</span><span class="p">,</span> <span class="n">theta_or_y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">b11</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">*</span> <span class="n">theta_or_y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">S1</span> <span class="o">*</span> <span class="n">p</span> <span class="o">+</span> <span class="n">K</span>
     <span class="n">b12</span> <span class="o">=</span> <span class="o">-</span><span class="n">K</span>
     <span class="n">b22</span> <span class="o">=</span> <span class="n">theta_or_y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">p</span> <span class="o">+</span> <span class="n">K</span>
@@ -1528,8 +1558,8 @@
     <span class="k">return</span> <span class="n">b11</span><span class="p">,</span> <span class="n">b12</span><span class="p">,</span> <span class="n">b22</span><span class="p">,</span> <span class="n">mu1</span><span class="p">,</span> <span class="n">mu2</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">A2</span>
 
 
-<span class="k">def</span> <span class="nf">_safe_factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Calculate factorial using logarithmic method to avoid overflow.&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_safe_factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate factorial using logarithmic method to avoid overflow.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -1538,8 +1568,8 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">gammaln</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
 
 
-<span class="k">def</span> <span class="nf">_StehfestCoeff</span><span class="p">(</span><span class="n">jj</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_StehfestCoeff</span><span class="p">(</span><span class="n">jj</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal function for Dudley Ward and Lough (2011) solution&quot;&quot;&quot;</span>
     <span class="n">LowerLimit</span> <span class="o">=</span> <span class="p">(</span><span class="n">jj</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
     <span class="n">UpperLimit</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">jj</span><span class="p">,</span> <span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
 
@@ -1588,7 +1618,7 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Jan 30, 2026.
+      <span class="lastupdated">Last updated on Aug 04, 2026.
       </span></p>
   </div>
 

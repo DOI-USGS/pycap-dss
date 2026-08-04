@@ -1,26 +1,25 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pycap.analysis_project &mdash; pycap-dss  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/plot_directive.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -31,11 +30,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> pycap-dss
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            pycap-dss
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -78,7 +81,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
       <li class="breadcrumb-item active">pycap.analysis_project</li>
       <li class="wy-breadcrumbs-aside">
@@ -90,20 +93,20 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pycap.analysis_project</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">asin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">radians</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">sqrt</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">asin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">radians</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">sqrt</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">yaml</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">pycap.solutions</span> <span class="kn">import</span> <span class="n">GPM2CFD</span>
-<span class="kn">from</span> <span class="nn">pycap.utilities</span> <span class="kn">import</span> <span class="n">Q2ts</span>
-<span class="kn">from</span> <span class="nn">pycap.wells</span> <span class="kn">import</span> <span class="n">Well</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycap.solutions</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPM2CFD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycap.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">Q2ts</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycap.wells</span><span class="w"> </span><span class="kn">import</span> <span class="n">Well</span>
 
 
-<span class="k">def</span> <span class="nf">_loc_to_dist</span><span class="p">(</span><span class="n">loc0</span><span class="p">,</span> <span class="n">loc1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_loc_to_dist</span><span class="p">(</span><span class="n">loc0</span><span class="p">,</span> <span class="n">loc1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Distance between two points in lat/long using Haversine Formula assuming</span>
 <span class="sd">    lat/long in decimal degrees, returned in feet</span>
 
@@ -131,8 +134,8 @@
     <span class="k">return</span> <span class="n">dist</span>
 
 
-<span class="k">def</span> <span class="nf">_print_to_screen_and_file</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">ofp</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;function to print formatted output to both</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_print_to_screen_and_file</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">ofp</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;function to print formatted output to both</span>
 <span class="sd">    the screen and a file</span>
 
 <span class="sd">    Parameters</span>
@@ -151,8 +154,8 @@
 
 
 <span class="c1"># some helper functions for printing out results</span>
-<span class="k">def</span> <span class="nf">_print_dd_depl</span><span class="p">(</span><span class="n">ofp</span><span class="p">,</span> <span class="n">cw_dd</span><span class="p">,</span> <span class="n">cw_max_depl</span><span class="p">,</span> <span class="n">theis_dd_days</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Function to write drawdown and depletion to a file.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_print_dd_depl</span><span class="p">(</span><span class="n">ofp</span><span class="p">,</span> <span class="n">cw_dd</span><span class="p">,</span> <span class="n">cw_max_depl</span><span class="p">,</span> <span class="n">theis_dd_days</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to write drawdown and depletion to a file.</span>
 
 
 <span class="sd">    Parameters</span>
@@ -189,21 +192,23 @@
         <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ck</span><span class="si">:</span><span class="s2">30s</span><span class="si">}{</span><span class="n">v</span><span class="si">:</span><span class="s2">&lt;30.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># convert max depletion to CFS</span>
 
 
-<span class="k">def</span> <span class="nf">_print_single_well_header</span><span class="p">(</span><span class="n">ofp</span><span class="p">,</span> <span class="n">wname</span><span class="p">,</span> <span class="n">wstatus</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_print_single_well_header</span><span class="p">(</span><span class="n">ofp</span><span class="p">,</span> <span class="n">wname</span><span class="p">,</span> <span class="n">wstatus</span><span class="p">):</span>
     <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Well Name: </span><span class="si">{</span><span class="n">wname</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Well status: </span><span class="si">{</span><span class="n">wstatus</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_print_combined_well_results</span><span class="p">(</span><span class="n">ofp</span><span class="p">,</span> <span class="n">cw_dat</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_print_combined_well_results</span><span class="p">(</span><span class="n">ofp</span><span class="p">,</span> <span class="n">cw_dat</span><span class="p">):</span>
     <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">total_dd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">v</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cw_dat</span><span class="o">.</span><span class="n">drawdown</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
     <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Drawdown (ft):   </span><span class="si">{</span><span class="n">total_dd</span><span class="si">:</span><span class="s2">&lt;16.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Project"><a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project">[docs]</a><span class="k">class</span> <span class="nc">Project</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ymlfile</span><span class="p">,</span> <span class="n">write_results_to_files</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">project_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Project">
+<a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Project</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ymlfile</span><span class="p">,</span> <span class="n">write_results_to_files</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">project_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Highest-level Class for a well drawdown and/or depletion analysis.</span>
 <span class="sd">        This Class is developed for the specific analysis needs of the</span>
 <span class="sd">        Wisconsin Department of Natural Resources and was initially created</span>
@@ -333,8 +338,8 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_results_to_files</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_report_yaml_input</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_parse_project_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pp</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Method to parse all the project properties from the YAML file block</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_project_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pp</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Method to parse all the project properties from the YAML file block</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -358,8 +363,8 @@
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="p">(</span><span class="s1">&#39;Formatting problem with &quot;project_properties&quot; block&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_parse_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;populate information about the responses to pull from in calculations</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;populate information about the responses to pull from in calculations</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -384,8 +389,8 @@
                     <span class="s2">&quot;streambed_conductance&quot;</span>
                 <span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">_parse_wells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;populate information about wells assigning apportionment values and</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_wells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;populate information about wells assigning apportionment values and</span>
 <span class="sd">            the lists of proposed and existing wells</span>
 
 <span class="sd">        Parameters</span>
@@ -426,8 +431,8 @@
                         <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="n">cak</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
                     <span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="n">cak</span><span class="p">][</span><span class="s2">&quot;apportionment&quot;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">_create_well_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_well_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Prepare to populate a Well object for each well,</span>
 <span class="sd">        using the attributes of each well and response</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -516,8 +521,8 @@
                 <span class="n">streambed_conductance</span><span class="o">=</span><span class="n">streambed_conductance</span><span class="p">,</span>
             <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_report_yaml_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_report_yaml_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        summarize broad details of the YAML file read in</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">logfile</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.yml.import_report&quot;</span><span class="p">)</span>
@@ -565,8 +570,10 @@
                     <span class="s2">&quot;No Drawdown Responses in the yml file&quot;</span><span class="p">,</span> <span class="n">ofp</span>
                 <span class="p">)</span>
 
-<div class="viewcode-block" id="Project.report_responses"><a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project.report_responses">[docs]</a>    <span class="k">def</span> <span class="nf">report_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Project.report_responses">
+<a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project.report_responses">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">report_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        make a report file - named from the YML name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ymlbase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">name</span>
@@ -649,8 +656,11 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_max_depletion</span><span class="p">,</span>
             <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Project.aggregate_results"><a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project.aggregate_results">[docs]</a>    <span class="k">def</span> <span class="nf">aggregate_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Project.aggregate_results">
+<a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project.aggregate_results">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">aggregate_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Aggregate all results from the Project</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># make a master dataframe for all the results</span>
@@ -821,8 +831,11 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_max_depletion</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span> <span class="o">+=</span> <span class="n">v</span></div>
 
-<div class="viewcode-block" id="Project.write_responses_csv"><a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project.write_responses_csv">[docs]</a>    <span class="k">def</span> <span class="nf">write_responses_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Project.write_responses_csv">
+<a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project.write_responses_csv">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write_responses_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Write all responses to an external CSV file</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># create a dataframe to hold the aggregated results</span>
@@ -951,7 +964,9 @@
                 <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.table_report.csv&quot;</span><span class="p">)</span>
                 <span class="c1"># make a home for the report file</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span>
-                <span class="n">agg_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span><span class="p">)</span></div></div>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span><span class="p">)</span></div>
+</div>
+
 
 </pre></div>
 
@@ -963,7 +978,7 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Jan 30, 2026.
+      <span class="lastupdated">Last updated on Aug 04, 2026.
       </span></p>
   </div>
 
