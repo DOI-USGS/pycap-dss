@@ -301,7 +301,9 @@
             <span class="c1"># first test, if there is a time series file that all well keys are columns</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ts</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="k">assert</span> <span class="nb">all</span><span class="p">([</span><span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q_ts</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wellkeys</span><span class="p">])</span>
+                    <span class="c1"># assert all([i in self.Q_ts.columns for i in self.wellkeys])</span>
+                    <span class="k">assert</span> <span class="nb">all</span><span class="p">([</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q_ts</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wellkeys</span><span class="p">])</span>
+
                 <span class="k">except</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
                         <span class="s2">&quot;not all well names are represented in the time series file&quot;</span>
