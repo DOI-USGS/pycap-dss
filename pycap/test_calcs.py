@@ -8,9 +8,7 @@ import pycap
 from pycap.utilities import Q2ts, create_timeseries_template
 
 
-# homepath = Path(getcwd())
-# datapath = homepath / 'tests' / 'data'
-datapath = Path("pycap/tests/data")
+datapath = Path(__file__).parent / "tests" / "data"
 
 create_timeseries_template(
     filename=datapath / "test_ts.csv",

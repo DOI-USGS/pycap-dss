@@ -6,7 +6,7 @@ project_properties:
   default_dd_days: 90
   default_depletion_years: 5
   default_pumping_days: 90
-  pumping_timeseries_file: 'pycap/tests/data/hunt_test_ts.csv'
+  pumping_timeseries_file: 'hunt_test_ts.csv'
 
 dd_response1:
   name: None

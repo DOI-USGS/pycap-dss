@@ -198,7 +198,13 @@ class Project:
         # look for a timeseries file in the project_properties block to determine how to
         # handle pumping
         if "pumping_timeseries_file" in d["project_properties"].keys():
-            self.tsfile = d["project_properties"]["pumping_timeseries_file"]
+            tsfile_raw = d["project_properties"]["pumping_timeseries_file"]
+            tsfile_path = Path(tsfile_raw)
+            if not tsfile_path.is_absolute() and self.ymlfile is not None:
+                tsfile_resolved = Path(self.ymlfile).parent / tsfile_path
+                if tsfile_resolved.exists():
+                    tsfile_path = tsfile_resolved
+            self.tsfile = tsfile_path
             self.ts = True
             self.Q_ts = pd.read_csv(self.tsfile).set_index("sequential_day")
             # first test, if there is a time series file that all well keys are columns
