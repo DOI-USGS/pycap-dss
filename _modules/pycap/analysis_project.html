@@ -106,7 +106,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_loc_to_dist</span><span class="p">(</span><span class="n">loc0</span><span class="p">,</span> <span class="n">loc1</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Distance between two points in lat/long using Haversine Formula assuming</span>
 <span class="sd">    lat/long in decimal degrees, returned in feet</span>
 
@@ -121,7 +121,7 @@
 <span class="sd">    -------</span>
 <span class="sd">    dist: float</span>
 <span class="sd">        distance between loc0 and loc1 in feet</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># convert decimal degrees to radians</span>
     <span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">radians</span><span class="p">,</span> <span class="p">[</span><span class="n">loc0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">loc0</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">loc1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">loc1</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
     <span class="c1"># haversine</span>
@@ -135,7 +135,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_print_to_screen_and_file</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">ofp</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;function to print formatted output to both</span>
+<span class="w">    </span><span class="sd">"""function to print formatted output to both</span>
 <span class="sd">    the screen and a file</span>
 
 <span class="sd">    Parameters</span>
@@ -148,14 +148,14 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    None</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
 
 <span class="c1"># some helper functions for printing out results</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">_print_dd_depl</span><span class="p">(</span><span class="n">ofp</span><span class="p">,</span> <span class="n">cw_dd</span><span class="p">,</span> <span class="n">cw_max_depl</span><span class="p">,</span> <span class="n">theis_dd_days</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to write drawdown and depletion to a file.</span>
+<span class="w">    </span><span class="sd">"""Function to write drawdown and depletion to a file.</span>
 
 
 <span class="sd">    Parameters</span>
@@ -174,9 +174,9 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    None</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;             **Drawdown**</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;Response&#39;</span><span class="si">:</span><span class="s2">30s</span><span class="si">}{</span><span class="s1">&#39;Drawdown(ft)&#39;</span><span class="si">:</span><span class="s2">30s</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">"             **Drawdown**</span><span class="se">\n</span><span class="si">{</span><span class="s1">'Response'</span><span class="si">:</span><span class="s2">30s</span><span class="si">}{</span><span class="s1">'Drawdown(ft)'</span><span class="si">:</span><span class="s2">30s</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
     <span class="p">)</span>
     <span class="k">for</span> <span class="n">ck</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cw_dd</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -184,31 +184,31 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">dd</span> <span class="o">=</span> <span class="n">v</span>
 
-        <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ck</span><span class="si">:</span><span class="s2">30s</span><span class="si">}{</span><span class="n">dd</span><span class="si">:</span><span class="s2">&lt;30.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">ck</span><span class="si">:</span><span class="s2">30s</span><span class="si">}{</span><span class="n">dd</span><span class="si">:</span><span class="s2">&lt;30.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
     <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;          **Maximum Depletion**</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;Response&#39;</span><span class="si">:</span><span class="s2">30s</span><span class="si">}{</span><span class="s1">&#39;Depletion(cfs)&#39;</span><span class="si">:</span><span class="s2">30s</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">"          **Maximum Depletion**</span><span class="se">\n</span><span class="si">{</span><span class="s1">'Response'</span><span class="si">:</span><span class="s2">30s</span><span class="si">}{</span><span class="s1">'Depletion(cfs)'</span><span class="si">:</span><span class="s2">30s</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
     <span class="p">)</span>
     <span class="k">for</span> <span class="n">ck</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cw_max_depl</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ck</span><span class="si">:</span><span class="s2">30s</span><span class="si">}{</span><span class="n">v</span><span class="si">:</span><span class="s2">&lt;30.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># convert max depletion to CFS</span>
+        <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">ck</span><span class="si">:</span><span class="s2">30s</span><span class="si">}{</span><span class="n">v</span><span class="si">:</span><span class="s2">&lt;30.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># convert max depletion to CFS</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_print_single_well_header</span><span class="p">(</span><span class="n">ofp</span><span class="p">,</span> <span class="n">wname</span><span class="p">,</span> <span class="n">wstatus</span><span class="p">):</span>
-    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Well Name: </span><span class="si">{</span><span class="n">wname</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Well status: </span><span class="si">{</span><span class="n">wstatus</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Well Name: </span><span class="si">{</span><span class="n">wname</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Well status: </span><span class="si">{</span><span class="n">wstatus</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_print_combined_well_results</span><span class="p">(</span><span class="n">ofp</span><span class="p">,</span> <span class="n">cw_dat</span><span class="p">):</span>
-    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"#"</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
     <span class="n">total_dd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">v</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cw_dat</span><span class="o">.</span><span class="n">drawdown</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
-    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Drawdown (ft):   </span><span class="si">{</span><span class="n">total_dd</span><span class="si">:</span><span class="s2">&lt;16.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total Drawdown (ft):   </span><span class="si">{</span><span class="n">total_dd</span><span class="si">:</span><span class="s2">&lt;16.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="Project">
 <a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Project</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ymlfile</span><span class="p">,</span> <span class="n">write_results_to_files</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">project_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Highest-level Class for a well drawdown and/or depletion analysis.</span>
 <span class="sd">        This Class is developed for the specific analysis needs of the</span>
 <span class="sd">        Wisconsin Department of Natural Resources and was initially created</span>
@@ -231,28 +231,28 @@
 <span class="sd">            Dictionary containing all the data from a yml configuration. Only read if </span>
 <span class="sd">            ymlfile is None. This option is to allow an in-memory-only driving of the </span>
 <span class="sd">            project to avoid any interaction with the disk.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write_results_to_files</span> <span class="o">=</span> <span class="n">write_results_to_files</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status_categories</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s2">&quot;existing&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;active&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pending&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;new_approved&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;inactive&quot;</span><span class="p">,</span>
+            <span class="s2">"existing"</span><span class="p">,</span>
+            <span class="s2">"active"</span><span class="p">,</span>
+            <span class="s2">"pending"</span><span class="p">,</span>
+            <span class="s2">"new_approved"</span><span class="p">,</span>
+            <span class="s2">"inactive"</span><span class="p">,</span>
         <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wells</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># dictionary to hold well objects</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">defaults</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s2">&quot;dd_days&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;depletion_years&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pumping_days&quot;</span><span class="p">,</span>
+            <span class="s2">"dd_days"</span><span class="p">,</span>
+            <span class="s2">"depletion_years"</span><span class="p">,</span>
+            <span class="s2">"pumping_days"</span><span class="p">,</span>
         <span class="p">]</span>  <span class="c1"># allowable project default parameters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stream_apportionment_dict</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">proposed_well_categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pending&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">existing_well_categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;existing&quot;</span><span class="p">,</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="s2">&quot;new_approved&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proposed_well_categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"pending"</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">existing_well_categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"existing"</span><span class="p">,</span> <span class="s2">"active"</span><span class="p">,</span> <span class="s2">"new_approved"</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">existing_wells</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">proposed_wells</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">depl_method</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="s2">&quot;walton_depletion&quot;</span>  <span class="c1"># default, can specify in the yml file</span>
+            <span class="s2">"walton_depletion"</span>  <span class="c1"># default, can specify in the yml file</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ts_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__dd_responses</span> <span class="o">=</span> <span class="kc">None</span>
@@ -265,37 +265,37 @@
                 <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">ifp</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">project_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">d</span> <span class="o">=</span> <span class="n">project_dict</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./default.yml&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"./default.yml"</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="p">(</span>
-                <span class="s2">&quot;Must either provide a YML file or a project dictionary&quot;</span>
+                <span class="s2">"Must either provide a YML file or a project dictionary"</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_results_to_files</span><span class="p">:</span>
             <span class="c1"># make a home for the report file</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;output&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">"output"</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outpath</span><span class="p">):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outpath</span><span class="p">)</span>
 
         <span class="c1"># parse project_properties block</span>
-        <span class="k">if</span> <span class="s2">&quot;project_properties&quot;</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_parse_project_properties</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;project_properties&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s2">"project_properties"</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse_project_properties</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">"project_properties"</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="p">(</span>
-                <span class="s1">&#39;Configuration YAML file must have a &quot;project_properties&quot; block&#39;</span>
+                <span class="s1">'Configuration YAML file must have a "project_properties" block'</span>
             <span class="p">)</span>
 
         <span class="c1"># get the keys for all the remaining blocks</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wellkeys</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;well&quot;</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ddkeys</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;dd_resp&quot;</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wellkeys</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"well"</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ddkeys</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"dd_resp"</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">streamkeys</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;stream&quot;</span><span class="p">)</span>
+            <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"stream"</span><span class="p">)</span>
         <span class="p">]</span>
 
         <span class="c1"># look for a timeseries file in the project_properties block to determine how to</span>
         <span class="c1"># handle pumping</span>
-        <span class="k">if</span> <span class="s2">&quot;pumping_timeseries_file&quot;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;project_properties&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">tsfile_raw</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;project_properties&quot;</span><span class="p">][</span><span class="s2">&quot;pumping_timeseries_file&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">"pumping_timeseries_file"</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="s2">"project_properties"</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">tsfile_raw</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s2">"project_properties"</span><span class="p">][</span><span class="s2">"pumping_timeseries_file"</span><span class="p">]</span>
             <span class="n">tsfile_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tsfile_raw</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">tsfile_path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">tsfile_resolved</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">tsfile_path</span>
@@ -303,16 +303,16 @@
                     <span class="n">tsfile_path</span> <span class="o">=</span> <span class="n">tsfile_resolved</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tsfile</span> <span class="o">=</span> <span class="n">tsfile_path</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ts</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">Q_ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tsfile</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;sequential_day&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Q_ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tsfile</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"sequential_day"</span><span class="p">)</span>
             <span class="c1"># first test, if there is a time series file that all well keys are columns</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ts</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="c1"># assert all([i in self.Q_ts.columns for i in self.wellkeys])</span>
-                    <span class="k">assert</span> <span class="nb">all</span><span class="p">([</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q_ts</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wellkeys</span><span class="p">])</span>
+                    <span class="k">assert</span> <span class="nb">all</span><span class="p">([</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">"name"</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q_ts</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wellkeys</span><span class="p">])</span>
 
                 <span class="k">except</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-                        <span class="s2">&quot;not all well names are represented in the time series file&quot;</span>
+                        <span class="s2">"not all well names are represented in the time series file"</span>
                     <span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
@@ -323,19 +323,19 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">streamkeys</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parse_responses</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">streamkeys</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no stream responses supplied for evaluation &quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"no stream responses supplied for evaluation "</span><span class="p">)</span>
 
         <span class="c1"># parse drawdown responses blocks</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ddkeys</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parse_responses</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ddkeys</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no drawdown responses supplied for evaluation &quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"no drawdown responses supplied for evaluation "</span><span class="p">)</span>
 
         <span class="c1"># parse well blocks</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wellkeys</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parse_wells</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="p">(</span><span class="s2">&quot;No wells were defined in the input file. Goodbye&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="p">(</span><span class="s2">"No wells were defined in the input file. Goodbye"</span><span class="p">)</span>
 
         <span class="c1"># TODO: verify that stream apportionment and stream response are same keys for a well</span>
         <span class="c1"># TODO: verify that all responses called out in wells exist in yaml file</span>
@@ -347,32 +347,32 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_report_yaml_input</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_parse_project_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pp</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Method to parse all the project properties from the YAML file block</span>
+<span class="w">        </span><span class="sd">"""Method to parse all the project properties from the YAML file block</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        pp: dict</span>
 <span class="sd">            Project properties block read from YML file</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="s2">&quot;depl_method&quot;</span> <span class="ow">in</span> <span class="n">pp</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">depl_method</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">&quot;depl_method&quot;</span><span class="p">]</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="s2">"depl_method"</span> <span class="ow">in</span> <span class="n">pp</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">depl_method</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">"depl_method"</span><span class="p">]</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">S</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">"T"</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">S</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">"S"</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">default_parameters</span> <span class="o">=</span> <span class="p">{}</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">default_parameters</span><span class="p">[</span><span class="s2">&quot;default_dd_days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">&quot;default_dd_days&quot;</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">default_parameters</span><span class="p">[</span><span class="s2">&quot;default_depletion_years&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
-                <span class="n">pp</span><span class="p">[</span><span class="s2">&quot;default_depletion_years&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">default_parameters</span><span class="p">[</span><span class="s2">"default_dd_days"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span><span class="s2">"default_dd_days"</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">default_parameters</span><span class="p">[</span><span class="s2">"default_depletion_years"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+                <span class="n">pp</span><span class="p">[</span><span class="s2">"default_depletion_years"</span><span class="p">]</span>
             <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">default_parameters</span><span class="p">[</span><span class="s2">&quot;default_pumping_days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span>
-                <span class="s2">&quot;default_pumping_days&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">default_parameters</span><span class="p">[</span><span class="s2">"default_pumping_days"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pp</span><span class="p">[</span>
+                <span class="s2">"default_pumping_days"</span>
             <span class="p">]</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="p">(</span><span class="s1">&#39;Formatting problem with &quot;project_properties&quot; block&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="p">(</span><span class="s1">'Formatting problem with "project_properties" block'</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_parse_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;populate information about the responses to pull from in calculations</span>
+<span class="w">        </span><span class="sd">"""populate information about the responses to pull from in calculations</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -380,25 +380,25 @@
 <span class="sd">            Dictionary keys to read from d</span>
 <span class="sd">        d: dict</span>
 <span class="sd">            yml file data</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;dd&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"dd"</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__dd_responses</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="n">cr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dd_responses</span>
-        <span class="k">elif</span> <span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;stream&quot;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"stream"</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__stream_responses</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="n">cr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stream_responses</span>
         <span class="c1"># populate the appropriate dictionary on self with location and name</span>
         <span class="c1"># information of response</span>
         <span class="k">for</span> <span class="n">ck</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
-            <span class="n">cr</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">&quot;loc&quot;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="s2">&quot;streambed_conductance&quot;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                <span class="n">cr</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;streambed_conductance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span>
-                    <span class="s2">&quot;streambed_conductance&quot;</span>
+            <span class="n">cr</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">"name"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">"loc"</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s2">"streambed_conductance"</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">cr</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">"name"</span><span class="p">]][</span><span class="s2">"streambed_conductance"</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span>
+                    <span class="s2">"streambed_conductance"</span>
                 <span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_parse_wells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;populate information about wells assigning apportionment values and</span>
+<span class="w">        </span><span class="sd">"""populate information about wells assigning apportionment values and</span>
 <span class="sd">            the lists of proposed and existing wells</span>
 
 <span class="sd">        Parameters</span>
@@ -407,69 +407,69 @@
 <span class="sd">            yml file data</span>
 <span class="sd">        ts: bool</span>
 <span class="sd">            flag as to whether a timeseries dataframe was read in</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__well_data</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">for</span> <span class="n">ck</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wellkeys</span><span class="p">:</span>
             <span class="c1"># populate dictionary using well name as key with all well data</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__well_data</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__well_data</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">"name"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span>
 
             <span class="c1"># make sure if ts is supplied that Q is not supplied for each well</span>
             <span class="k">if</span> <span class="n">ts</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-                <span class="k">if</span> <span class="s2">&quot;Q&quot;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;pumping_days&quot;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">if</span> <span class="s2">"Q"</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">"pumping_days"</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                     <span class="k">raise</span> <span class="p">(</span>
-                        <span class="s2">&quot;ERROR:</span><span class="se">\n</span><span class="s2">time series file was supplied AND Q of &quot;</span>
-                        <span class="o">+</span> <span class="s2">&quot;pumping_days was supplied for at</span><span class="se">\n</span><span class="s2">&quot;</span>
-                        <span class="o">+</span> <span class="s2">&quot;one well. User can only supply pumping &quot;</span>
-                        <span class="o">+</span> <span class="s2">&quot;rates in one or the other</span><span class="se">\n</span><span class="s2">&quot;</span>
-                        <span class="o">+</span> <span class="s2">&quot;Please try again....&quot;</span>
+                        <span class="s2">"ERROR:</span><span class="se">\n</span><span class="s2">time series file was supplied AND Q of "</span>
+                        <span class="o">+</span> <span class="s2">"pumping_days was supplied for at</span><span class="se">\n</span><span class="s2">"</span>
+                        <span class="o">+</span> <span class="s2">"one well. User can only supply pumping "</span>
+                        <span class="o">+</span> <span class="s2">"rates in one or the other</span><span class="se">\n</span><span class="s2">"</span>
+                        <span class="o">+</span> <span class="s2">"Please try again...."</span>
                     <span class="p">)</span>
 
             <span class="c1"># populate categories of wells</span>
-            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposed_well_categories</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">proposed_wells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">existing_well_categories</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">existing_wells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">"status"</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposed_well_categories</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">proposed_wells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">"name"</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">"status"</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">existing_well_categories</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">existing_wells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">"name"</span><span class="p">])</span>
             <span class="c1"># also, parse out stream apportionment for existing and proposed wells</span>
-            <span class="n">streamappkeys</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="s2">&quot;apportion&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span>
+            <span class="n">streamappkeys</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="s2">"apportion"</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">streamappkeys</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">stream_apportionment_dict</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stream_apportionment_dict</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">"name"</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
                 <span class="k">for</span> <span class="n">cak</span> <span class="ow">in</span> <span class="n">streamappkeys</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">stream_apportionment_dict</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span>
-                        <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="n">cak</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
-                    <span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="n">cak</span><span class="p">][</span><span class="s2">&quot;apportionment&quot;</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stream_apportionment_dict</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="s2">"name"</span><span class="p">]][</span>
+                        <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="n">cak</span><span class="p">][</span><span class="s2">"name"</span><span class="p">]</span>
+                    <span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">ck</span><span class="p">][</span><span class="n">cak</span><span class="p">][</span><span class="s2">"apportionment"</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_create_well_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Prepare to populate a Well object for each well,</span>
 <span class="sd">        using the attributes of each well and response</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">for</span> <span class="n">ck</span><span class="p">,</span> <span class="n">cw</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__well_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="c1"># update defaults as appropriate</span>
             <span class="k">for</span> <span class="n">currdef</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">defaults</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">currdef</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cw</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                    <span class="n">cw</span><span class="p">[</span><span class="n">currdef</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_parameters</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;default_</span><span class="si">{</span><span class="n">currdef</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+                    <span class="n">cw</span><span class="p">[</span><span class="n">currdef</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_parameters</span><span class="p">[</span><span class="sa">f</span><span class="s2">"default_</span><span class="si">{</span><span class="n">currdef</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span>
             <span class="c1"># calculate all necessary distances</span>
             <span class="c1"># first streams</span>
             <span class="n">stream_dist</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">if</span> <span class="s2">&quot;stream_response&quot;</span> <span class="ow">in</span> <span class="n">cw</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="s2">"stream_response"</span> <span class="ow">in</span> <span class="n">cw</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                 <span class="n">stream_dist</span> <span class="o">=</span> <span class="p">{}</span>
                 <span class="n">streambed_conductance</span> <span class="o">=</span> <span class="p">{}</span>
                 <span class="n">streambed_cond_calc</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="k">for</span> <span class="n">c_resp</span> <span class="ow">in</span> <span class="n">cw</span><span class="p">[</span><span class="s2">&quot;stream_response&quot;</span><span class="p">]:</span>
-                    <span class="n">streamx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__stream_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">][</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
-                    <span class="n">streamy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__stream_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">][</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">c_resp</span> <span class="ow">in</span> <span class="n">cw</span><span class="p">[</span><span class="s2">"stream_response"</span><span class="p">]:</span>
+                    <span class="n">streamx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__stream_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">][</span><span class="s2">"x"</span><span class="p">]</span>
+                    <span class="n">streamy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__stream_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">][</span><span class="s2">"y"</span><span class="p">]</span>
                     <span class="n">stream_dist</span><span class="p">[</span><span class="n">c_resp</span><span class="p">]</span> <span class="o">=</span> <span class="n">_loc_to_dist</span><span class="p">(</span>
-                        <span class="p">[</span><span class="n">cw</span><span class="p">[</span><span class="s2">&quot;loc&quot;</span><span class="p">][</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">cw</span><span class="p">[</span><span class="s2">&quot;loc&quot;</span><span class="p">][</span><span class="s2">&quot;y&quot;</span><span class="p">]],</span> <span class="p">[</span><span class="n">streamx</span><span class="p">,</span> <span class="n">streamy</span><span class="p">]</span>
+                        <span class="p">[</span><span class="n">cw</span><span class="p">[</span><span class="s2">"loc"</span><span class="p">][</span><span class="s2">"x"</span><span class="p">],</span> <span class="n">cw</span><span class="p">[</span><span class="s2">"loc"</span><span class="p">][</span><span class="s2">"y"</span><span class="p">]],</span> <span class="p">[</span><span class="n">streamx</span><span class="p">,</span> <span class="n">streamy</span><span class="p">]</span>
                     <span class="p">)</span>
                     <span class="k">if</span> <span class="p">(</span>
-                        <span class="s2">&quot;streambed_conductance&quot;</span>
+                        <span class="s2">"streambed_conductance"</span>
                         <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__stream_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
                     <span class="p">):</span>
                         <span class="n">streambed_conductance</span><span class="p">[</span><span class="n">c_resp</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">_Project__stream_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">][</span>
-                                <span class="s2">&quot;streambed_conductance&quot;</span>
+                                <span class="s2">"streambed_conductance"</span>
                             <span class="p">]</span>
                         <span class="p">)</span>
                         <span class="n">streambed_cond_calc</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -478,23 +478,23 @@
 
             <span class="c1"># next, drawdowns</span>
             <span class="n">dd_dist</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">if</span> <span class="s2">&quot;dd_response&quot;</span> <span class="ow">in</span> <span class="n">cw</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="s2">"dd_response"</span> <span class="ow">in</span> <span class="n">cw</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                 <span class="n">dd_dist</span> <span class="o">=</span> <span class="p">{}</span>
                 <span class="n">streambed_cond_calc</span> <span class="o">=</span> <span class="mi">0</span>
 
-                <span class="k">for</span> <span class="n">c_resp</span> <span class="ow">in</span> <span class="n">cw</span><span class="p">[</span><span class="s2">&quot;dd_response&quot;</span><span class="p">]:</span>
-                    <span class="n">ddx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__dd_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">][</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
-                    <span class="n">ddy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__dd_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">][</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">c_resp</span> <span class="ow">in</span> <span class="n">cw</span><span class="p">[</span><span class="s2">"dd_response"</span><span class="p">]:</span>
+                    <span class="n">ddx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__dd_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">][</span><span class="s2">"x"</span><span class="p">]</span>
+                    <span class="n">ddy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__dd_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">][</span><span class="s2">"y"</span><span class="p">]</span>
                     <span class="n">dd_dist</span><span class="p">[</span><span class="n">c_resp</span><span class="p">]</span> <span class="o">=</span> <span class="n">_loc_to_dist</span><span class="p">(</span>
-                        <span class="p">[</span><span class="n">cw</span><span class="p">[</span><span class="s2">&quot;loc&quot;</span><span class="p">][</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">cw</span><span class="p">[</span><span class="s2">&quot;loc&quot;</span><span class="p">][</span><span class="s2">&quot;y&quot;</span><span class="p">]],</span> <span class="p">[</span><span class="n">ddx</span><span class="p">,</span> <span class="n">ddy</span><span class="p">]</span>
+                        <span class="p">[</span><span class="n">cw</span><span class="p">[</span><span class="s2">"loc"</span><span class="p">][</span><span class="s2">"x"</span><span class="p">],</span> <span class="n">cw</span><span class="p">[</span><span class="s2">"loc"</span><span class="p">][</span><span class="s2">"y"</span><span class="p">]],</span> <span class="p">[</span><span class="n">ddx</span><span class="p">,</span> <span class="n">ddy</span><span class="p">]</span>
                     <span class="p">)</span>
                     <span class="k">if</span> <span class="p">(</span>
-                        <span class="s2">&quot;streambed_conductance&quot;</span>
+                        <span class="s2">"streambed_conductance"</span>
                         <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__dd_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
                     <span class="p">):</span>
                         <span class="n">streambed_conductance</span><span class="p">[</span><span class="n">c_resp</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">_Project__dd_responses</span><span class="p">[</span><span class="n">c_resp</span><span class="p">][</span>
-                                <span class="s2">&quot;streambed_conductance&quot;</span>
+                                <span class="s2">"streambed_conductance"</span>
                             <span class="p">]</span>
                         <span class="p">)</span>
                         <span class="n">streambed_cond_calc</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -511,7 +511,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">Q</span> <span class="o">=</span> <span class="p">(</span>
                     <span class="n">Q2ts</span><span class="p">(</span>
-                        <span class="n">cw</span><span class="p">[</span><span class="s2">&quot;pumping_days&quot;</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">cw</span><span class="p">[</span><span class="s2">&quot;depletion_years&quot;</span><span class="p">]),</span> <span class="n">cw</span><span class="p">[</span><span class="s2">&quot;Q&quot;</span><span class="p">]</span>
+                        <span class="n">cw</span><span class="p">[</span><span class="s2">"pumping_days"</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">cw</span><span class="p">[</span><span class="s2">"depletion_years"</span><span class="p">]),</span> <span class="n">cw</span><span class="p">[</span><span class="s2">"Q"</span><span class="p">]</span>
                     <span class="p">)</span>
                 <span class="p">)</span> <span class="o">*</span> <span class="n">GPM2CFD</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ts_len</span><span class="p">):</span>
@@ -520,8 +520,8 @@
                 <span class="n">T</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
                 <span class="n">S</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">S</span><span class="p">,</span>
                 <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span>
-                <span class="n">theis_dd_days</span><span class="o">=</span><span class="n">cw</span><span class="p">[</span><span class="s2">&quot;dd_days&quot;</span><span class="p">],</span>
-                <span class="n">depletion_years</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">cw</span><span class="p">[</span><span class="s2">&quot;depletion_years&quot;</span><span class="p">]),</span>
+                <span class="n">theis_dd_days</span><span class="o">=</span><span class="n">cw</span><span class="p">[</span><span class="s2">"dd_days"</span><span class="p">],</span>
+                <span class="n">depletion_years</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">cw</span><span class="p">[</span><span class="s2">"depletion_years"</span><span class="p">]),</span>
                 <span class="n">stream_dist</span><span class="o">=</span><span class="n">stream_dist</span><span class="p">,</span>
                 <span class="n">drawdown_dist</span><span class="o">=</span><span class="n">dd_dist</span><span class="p">,</span>
                 <span class="n">stream_apportionment</span><span class="o">=</span><span class="n">stream_app_d</span><span class="p">,</span>
@@ -530,78 +530,78 @@
             <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_report_yaml_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        summarize broad details of the YAML file read in</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">logfile</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.yml.import_report&quot;</span><span class="p">)</span>
-        <span class="n">logfile</span> <span class="o">=</span> <span class="n">logfile</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yaml&quot;</span><span class="p">,</span> <span class="s2">&quot;.yml.import_report&quot;</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ofp</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Writing report to </span><span class="si">{</span><span class="n">logfile</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">logfile</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".yml"</span><span class="p">,</span> <span class="s2">".yml.import_report"</span><span class="p">)</span>
+        <span class="n">logfile</span> <span class="o">=</span> <span class="n">logfile</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".yaml"</span><span class="p">,</span> <span class="s2">".yml.import_report"</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">ofp</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Writing report to </span><span class="si">{</span><span class="n">logfile</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">)</span>
+            <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
             <span class="n">_print_to_screen_and_file</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Successfully parsed </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="si">}</span><span class="s2"> (high five!)&quot;</span><span class="p">,</span> <span class="n">ofp</span>
+                <span class="sa">f</span><span class="s2">"Successfully parsed </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="si">}</span><span class="s2"> (high five!)"</span><span class="p">,</span> <span class="n">ofp</span>
             <span class="p">)</span>
-            <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">&quot;*&quot;</span> <span class="o">*</span> <span class="mi">25</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
-            <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">&quot;Summary follows:&quot;</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
-            <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">WELLS:&quot;</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
+            <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">"*"</span> <span class="o">*</span> <span class="mi">25</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
+            <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">"Summary follows:"</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
+            <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">WELLS:"</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
             <span class="c1"># print well summary</span>
             <span class="k">for</span> <span class="n">ck</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">status_categories</span><span class="p">:</span>
                 <span class="n">cw</span> <span class="o">=</span> <span class="p">[</span>
                     <span class="n">k</span>
                     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__well_data</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                    <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ck</span>
+                    <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="n">ck</span>
                 <span class="p">]</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cw</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cw</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">ck</span><span class="si">}</span><span class="s2"> wells:&quot;</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
-                    <span class="p">[</span><span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cw</span><span class="p">]</span>
+                    <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cw</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">ck</span><span class="si">}</span><span class="s2"> wells:"</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
+                    <span class="p">[</span><span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cw</span><span class="p">]</span>
             <span class="c1"># stream response summary</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__stream_responses</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">STREAM RESPONSES:&quot;</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
+                <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">STREAM RESPONSES:"</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
                 <span class="p">[</span>
-                    <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">ck</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
+                    <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="si">{</span><span class="n">ck</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">ck</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__stream_responses</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
                 <span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">_print_to_screen_and_file</span><span class="p">(</span>
-                    <span class="s2">&quot;No Stream Responses in the yml file&quot;</span><span class="p">,</span> <span class="n">ofp</span>
+                    <span class="s2">"No Stream Responses in the yml file"</span><span class="p">,</span> <span class="n">ofp</span>
                 <span class="p">)</span>
 
             <span class="c1"># drawdown response summary</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__dd_responses</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">&quot;DRAWDOWN RESPONSES:&quot;</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
+                <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="s2">"DRAWDOWN RESPONSES:"</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
                 <span class="p">[</span>
-                    <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">ck</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
+                    <span class="n">_print_to_screen_and_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="si">{</span><span class="n">ck</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">ofp</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">ck</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__dd_responses</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
                 <span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">_print_to_screen_and_file</span><span class="p">(</span>
-                    <span class="s2">&quot;No Drawdown Responses in the yml file&quot;</span><span class="p">,</span> <span class="n">ofp</span>
+                    <span class="s2">"No Drawdown Responses in the yml file"</span><span class="p">,</span> <span class="n">ofp</span>
                 <span class="p">)</span>
 
 <div class="viewcode-block" id="Project.report_responses">
 <a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project.report_responses">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">report_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        make a report file - named from the YML name</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">ymlbase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">name</span>
-        <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.report.txt&quot;</span><span class="p">)</span>
+        <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".yml"</span><span class="p">,</span> <span class="s2">".report.txt"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">report_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">report_filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ofp</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">report_filename</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">ofp</span><span class="p">:</span>
             <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;HiCap well analysis report, configured from: </span><span class="si">{</span><span class="n">ymlbase</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">"HiCap well analysis report, configured from: </span><span class="si">{</span><span class="n">ymlbase</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
             <span class="p">)</span>
 
             <span class="c1"># Report on each well</span>
-            <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">INDIVIDUAL PROPOSED WELL REPORTS</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">INDIVIDUAL PROPOSED WELL REPORTS</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proposed_wells</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                    <span class="s2">&quot;  there were no proposed wells in the configuration file!</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">"  there were no proposed wells in the configuration file!</span><span class="se">\n</span><span class="s2">"</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">cex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposed_wells</span><span class="p">:</span>
                     <span class="n">_print_single_well_header</span><span class="p">(</span>
-                        <span class="n">ofp</span><span class="p">,</span> <span class="n">cex</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__well_data</span><span class="p">[</span><span class="n">cex</span><span class="p">][</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+                        <span class="n">ofp</span><span class="p">,</span> <span class="n">cex</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__well_data</span><span class="p">[</span><span class="n">cex</span><span class="p">][</span><span class="s2">"status"</span><span class="p">]</span>
                     <span class="p">)</span>
                     <span class="n">cw_dat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wells</span><span class="p">[</span><span class="n">cex</span><span class="p">]</span>
                     <span class="n">_print_dd_depl</span><span class="p">(</span>
@@ -610,17 +610,17 @@
                         <span class="n">cw_dat</span><span class="o">.</span><span class="n">max_depletion</span><span class="p">,</span>
                         <span class="n">cw_dat</span><span class="o">.</span><span class="n">theis_dd_days</span><span class="p">,</span>
                     <span class="p">)</span>
-                <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
-            <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">INDIVIDUAL EXISTING WELL REPORTS</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">INDIVIDUAL EXISTING WELL REPORTS</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">existing_wells</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                    <span class="s2">&quot;  there were no existing wells in the configuration file!</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">"  there were no existing wells in the configuration file!</span><span class="se">\n</span><span class="s2">"</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">cex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">existing_wells</span><span class="p">:</span>
                     <span class="n">_print_single_well_header</span><span class="p">(</span>
-                        <span class="n">ofp</span><span class="p">,</span> <span class="n">cex</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__well_data</span><span class="p">[</span><span class="n">cex</span><span class="p">][</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+                        <span class="n">ofp</span><span class="p">,</span> <span class="n">cex</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Project__well_data</span><span class="p">[</span><span class="n">cex</span><span class="p">][</span><span class="s2">"status"</span><span class="p">]</span>
                     <span class="p">)</span>
                     <span class="n">cw_dat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wells</span><span class="p">[</span><span class="n">cex</span><span class="p">]</span>
                     <span class="n">_print_dd_depl</span><span class="p">(</span>
@@ -629,14 +629,14 @@
                         <span class="n">cw_dat</span><span class="o">.</span><span class="n">max_depletion</span><span class="p">,</span>
                         <span class="n">cw_dat</span><span class="o">.</span><span class="n">theis_dd_days</span><span class="p">,</span>
                     <span class="p">)</span>
-                <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">aggregate_results</span><span class="p">()</span>
 
-            <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">COMBINED PROPOSED WELL REPORTS</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">COMBINED PROPOSED WELL REPORTS</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"#"</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proposed_wells</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                    <span class="s2">&quot;  there were no proposed wells in the configuration file!</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">"  there were no proposed wells in the configuration file!</span><span class="se">\n</span><span class="s2">"</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">_print_dd_depl</span><span class="p">(</span>
@@ -645,10 +645,10 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">proposed_aggregated_max_depletion</span><span class="p">,</span>
                 <span class="p">)</span>
 
-            <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">COMBINED EXISTING WELL REPORTS</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">COMBINED EXISTING WELL REPORTS</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"#"</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">existing_wells</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                    <span class="s2">&quot;  there were no existing wells in the configuration file!</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">"  there were no existing wells in the configuration file!</span><span class="se">\n</span><span class="s2">"</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">_print_dd_depl</span><span class="p">(</span>
@@ -657,7 +657,7 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">existing_aggregated_max_depletion</span><span class="p">,</span>
                 <span class="p">)</span>
 
-            <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">TOTAL COMBINED WELL REPORTS</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;#&quot;</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">ofp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">TOTAL COMBINED WELL REPORTS</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"#"</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
             <span class="n">_print_dd_depl</span><span class="p">(</span>
                 <span class="n">ofp</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_drawdown</span><span class="p">,</span>
@@ -668,9 +668,9 @@
 <div class="viewcode-block" id="Project.aggregate_results">
 <a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project.aggregate_results">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">aggregate_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Aggregate all results from the Project</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="c1"># make a master dataframe for all the results</span>
         <span class="n">times</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ts_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">all_depl_ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">times</span><span class="p">)</span>
@@ -724,7 +724,7 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">existing_aggregated_sum_depletion</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span> <span class="o">+=</span> <span class="n">v</span>
                 <span class="c1"># also parse to base stream name</span>
-                <span class="n">base_key</span> <span class="o">=</span> <span class="n">ck</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">base_key</span> <span class="o">=</span> <span class="n">ck</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">base_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_streams</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">base_streams</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base_key</span><span class="p">)</span>
                 <span class="k">if</span> <span class="p">(</span>
@@ -776,7 +776,7 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">proposed_aggregated_sum_depletion</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span> <span class="o">+=</span> <span class="n">v</span>
                 <span class="c1"># also parse to base stream name</span>
-                <span class="n">base_key</span> <span class="o">=</span> <span class="n">ck</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">base_key</span> <span class="o">=</span> <span class="n">ck</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="k">if</span> <span class="p">(</span>
                     <span class="n">base_key</span>
                     <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposed_aggregated_base_stream_sum_depletion</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
@@ -818,7 +818,7 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_sum_depletion</span><span class="p">[</span><span class="n">ck</span><span class="p">]</span> <span class="o">+=</span> <span class="n">v</span>
                 <span class="c1"># also parse to base stream name</span>
-                <span class="n">base_key</span> <span class="o">=</span> <span class="n">ck</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">base_key</span> <span class="o">=</span> <span class="n">ck</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="k">if</span> <span class="p">(</span>
                     <span class="n">base_key</span>
                     <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_base_stream_sum_depletion</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
@@ -843,27 +843,27 @@
 <div class="viewcode-block" id="Project.write_responses_csv">
 <a class="viewcode-back" href="../../api/pycap.analysis_project.html#pycap.analysis_project.Project.write_responses_csv">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">write_responses_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Write all responses to an external CSV file</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="c1"># create a dataframe to hold the aggregated results</span>
         <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:dd (ft)&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_drawdown</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:dd (ft)"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_drawdown</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
         <span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:depl (cfs)&quot;</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:depl (cfs)"</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_max_depletion</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
         <span class="p">]</span>
         <span class="n">col_base</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">i</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;:dd (ft)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;:depl (cfs)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cols</span>
+            <span class="n">i</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">":dd (ft)"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">":depl (cfs)"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cols</span>
         <span class="p">]</span>
 
         <span class="n">rows</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: proposed&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposed_wells</span><span class="p">]</span>
-            <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: existing&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">existing_wells</span><span class="p">]</span>
-            <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;total_proposed&quot;</span><span class="p">,</span> <span class="s2">&quot;total_existing&quot;</span><span class="p">,</span> <span class="s2">&quot;total_combined&quot;</span><span class="p">]</span>
+            <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: proposed"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposed_wells</span><span class="p">]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: existing"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">existing_wells</span><span class="p">]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="s2">"total_proposed"</span><span class="p">,</span> <span class="s2">"total_existing"</span><span class="p">,</span> <span class="s2">"total_combined"</span><span class="p">]</span>
         <span class="p">)</span>
         <span class="n">row_base</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">i</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;: existing&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;: proposed&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rows</span>
+            <span class="n">i</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">": existing"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">": proposed"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rows</span>
         <span class="p">]</span>
         <span class="n">agg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">row_base</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">col_base</span><span class="p">)</span>
 
@@ -884,42 +884,42 @@
                 <span class="n">cwmaxdep</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="o">/</span> <span class="mi">3600</span> <span class="o">/</span> <span class="mi">24</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cwmaxdep</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
                 <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdepl</span> <span class="ow">in</span> <span class="n">cwmaxdep</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                     <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cn</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdepl</span>
-                    <span class="n">basekey</span> <span class="o">=</span> <span class="n">cresp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">basekey</span> <span class="o">=</span> <span class="n">cresp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                     <span class="n">agg_base_stream_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cn</span><span class="p">,</span> <span class="n">basekey</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdepl</span>
 
             <span class="c1"># totals</span>
             <span class="c1"># proposed</span>
             <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposed_aggregated_drawdown</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_proposed&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_proposed"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
             <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdepl</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposed_aggregated_max_depletion</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_proposed&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdepl</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_proposed"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdepl</span>
             <span class="k">for</span> <span class="p">(</span>
                 <span class="n">cresp</span><span class="p">,</span>
                 <span class="n">cdepl</span><span class="p">,</span>
             <span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposed_aggregated_base_stream_sum_depletion</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_base_stream_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_proposed&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cdepl</span><span class="p">)</span>
+                <span class="n">agg_base_stream_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_proposed"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cdepl</span><span class="p">)</span>
 
             <span class="c1"># existing</span>
             <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">existing_aggregated_drawdown</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_existing&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_existing"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
             <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdepl</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">existing_aggregated_max_depletion</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_existing&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdepl</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_existing"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdepl</span>
             <span class="k">for</span> <span class="p">(</span>
                 <span class="n">cresp</span><span class="p">,</span>
                 <span class="n">cdepl</span><span class="p">,</span>
             <span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">existing_aggregated_base_stream_sum_depletion</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_base_stream_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_existing&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cdepl</span><span class="p">)</span>
+                <span class="n">agg_base_stream_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_existing"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cdepl</span><span class="p">)</span>
 
             <span class="c1"># total</span>
             <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_drawdown</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_combined&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_combined"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
             <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdepl</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_max_depletion</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_combined&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdepl</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_combined"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdepl</span>
             <span class="k">for</span> <span class="p">(</span>
                 <span class="n">cresp</span><span class="p">,</span>
                 <span class="n">cdepl</span><span class="p">,</span>
             <span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_base_stream_sum_depletion</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_base_stream_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_combined&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cdepl</span><span class="p">)</span>
+                <span class="n">agg_base_stream_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_combined"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cdepl</span><span class="p">)</span>
 
             <span class="n">agg_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
             <span class="n">agg_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">rows</span>
@@ -927,15 +927,15 @@
             <span class="c1"># if writing output, make the filenames and write the csvs</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_results_to_files</span><span class="p">:</span>
                 <span class="n">ymlbase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">name</span>
-                <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.table_report.csv&quot;</span><span class="p">)</span>
+                <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".yml"</span><span class="p">,</span> <span class="s2">".table_report.csv"</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span>
                 <span class="n">agg_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;.base_stream_depletion.csv&quot;</span>
+                <span class="s2">".csv"</span><span class="p">,</span> <span class="s2">".base_stream_depletion.csv"</span>
                 <span class="p">)</span>
                 <span class="n">agg_base_stream_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_filename</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_ts_filename</span> <span class="o">=</span> <span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;.all_ts.csv&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".csv"</span><span class="p">,</span> <span class="s2">".all_ts.csv"</span><span class="p">)</span>
                 <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">all_depl_ts</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_stream_output_ts_filename</span><span class="p">)</span>
 
@@ -953,13 +953,13 @@
             <span class="c1"># totals</span>
             <span class="c1"># proposed</span>
             <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">proposed_aggregated_drawdown</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_proposed&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_proposed"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
             <span class="c1"># existing</span>
             <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">existing_aggregated_drawdown</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_existing&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_existing"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
             <span class="c1"># total</span>
             <span class="k">for</span> <span class="n">cresp</span><span class="p">,</span> <span class="n">cdd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_aggregated_drawdown</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;total_combined&quot;</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
+                <span class="n">agg_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"total_combined"</span><span class="p">,</span> <span class="n">cresp</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdd</span>
 
             <span class="n">agg_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
             <span class="n">agg_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">rows</span>           \
@@ -969,7 +969,7 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_results_to_files</span><span class="p">:</span>
                 <span class="c1"># make a report file - named from the YML name</span>
                 <span class="n">ymlbase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymlfile</span><span class="o">.</span><span class="n">name</span>
-                <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.table_report.csv&quot;</span><span class="p">)</span>
+                <span class="n">outfile</span> <span class="o">=</span> <span class="n">ymlbase</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".yml"</span><span class="p">,</span> <span class="s2">".table_report.csv"</span><span class="p">)</span>
                 <span class="c1"># make a home for the report file</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outpath</span> <span class="o">/</span> <span class="n">outfile</span>
                 <span class="n">agg_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csv_output_filename</span><span class="p">)</span></div>
@@ -986,7 +986,7 @@
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Aug 04, 2026.
+      <span class="lastupdated">Last updated on Oct 13, 2026.
       </span></p>
   </div>
 

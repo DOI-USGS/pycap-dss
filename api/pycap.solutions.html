@@ -185,8 +185,7 @@ Defaults to 2.</p>
 <dt class="sig sig-object py" id="pycap.solutions.dudley_ward_lough_drawdown">
 <span class="sig-prename descclassname"><span class="pre">pycap.solutions.</span></span><span class="sig-name descname"><span class="pre">dudley_ward_lough_drawdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">streambed_thick</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">streambed_K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aquitard_thick</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aquitard_K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NSteh1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NSteh2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycap/solutions.html#dudley_ward_lough_drawdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycap.solutions.dudley_ward_lough_drawdown" title="Link to this definition"></a></dt>
 <dd><p>Compute drawdown using Dudley Ward and Lough (2011) solution</p>
-<blockquote>
-<div><p>Dudley Ward and Lough (2011) presented a solution for streamflow depletion
+<p>Dudley Ward and Lough (2011) presented a solution for streamflow depletion
 by a pumping well in a layered aquifer system.  The stream
 is in the upper aquifer, and the pumping well is in a lower
 aquifer that is separated from the upper aquifer by a
@@ -195,7 +194,6 @@ semi-confining aquitard layer.</p>
 semiconfined aquifer in a two-layer leaky aquifer system (technical note):
 Journal of Hydrologic Engineering ASCE, v. 16, no. 11, pgs. 955-959,
 <a class="reference external" href="https://doi.org/10.1061/(ASCE)HE.1943-5584.0000382">https://doi.org/10.1061/(ASCE)HE.1943-5584.0000382</a>.</p>
-</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -292,14 +290,12 @@ v. 35, no. 3, pg. 468-470, <a class="reference external" href="https://doi.org/1
 <dt class="sig sig-object py" id="pycap.solutions.hunt_03_depletion">
 <span class="sig-prename descclassname"><span class="pre">pycap.solutions.</span></span><span class="sig-name descname"><span class="pre">hunt_03_depletion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bprime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bdouble</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aquitard_K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">streambed_conductance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_quad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycap/solutions.html#hunt_03_depletion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycap.solutions.hunt_03_depletion" title="Link to this definition"></a></dt>
 <dd><p>Function for Hunt (2003) solution for streamflow depletion by a pumping well.</p>
-<blockquote>
-<div><p>Computes streamflow depletion by a pumping well in a semiconfined aquifer
+<p>Computes streamflow depletion by a pumping well in a semiconfined aquifer
 for a partially penetrating stream.  The stream is in an upper semi-confining
 aquifer and pumping is in a lower aquifer.</p>
 <p>Hunt, B., 2003, Unsteady streamflow depletion when pumping
 from semiconfined aquifer: Journal of Hydrologic Engineering,
 v.8, no. 1, pgs 12-19. <a class="reference external" href="https://doi.org/10.1061/(ASCE)1084-0699(2003)8:1(12">https://doi.org/10.1061/(ASCE)1084-0699(2003)8:1(12</a>)</p>
-</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -353,13 +349,11 @@ only used if K is less than 1e-10</p>
 <dt class="sig sig-object py" id="pycap.solutions.hunt_99_depletion">
 <span class="sig-prename descclassname"><span class="pre">pycap.solutions.</span></span><span class="sig-name descname"><span class="pre">hunt_99_depletion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">streambed_conductance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycap/solutions.html#hunt_99_depletion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycap.solutions.hunt_99_depletion" title="Link to this definition"></a></dt>
 <dd><p>Function for Hunt (1999) solution for streamflow depletion by a pumping well.</p>
-<blockquote>
-<div><p>Computes streamflow depletion by a pumping well for a partially penetrating
+<p>Computes streamflow depletion by a pumping well for a partially penetrating
 stream with streambed resistance.</p>
 <p>Hunt, B., 1999, Unsteady streamflow depletion from ground
 water pumping: Groundwater, v. 37, no. 1, pgs. 98-102,
 <a class="reference external" href="https://doi.org/10.1111/j.1745-6584.1999.tb00962.x">https://doi.org/10.1111/j.1745-6584.1999.tb00962.x</a></p>
-</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -395,9 +389,11 @@ depending on input of time and dist [L**3/T]</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pycap.solutions.hunt_99_drawdown">
 <span class="sig-prename descclassname"><span class="pre">pycap.solutions.</span></span><span class="sig-name descname"><span class="pre">hunt_99_drawdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">streambed_conductance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycap/solutions.html#hunt_99_drawdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycap.solutions.hunt_99_drawdown" title="Link to this definition"></a></dt>
-<dd><dl>
+<dd><dl class="simple">
 <dt>Function to calculate drawdown in an aquifer with a partially</dt><dd><p>penetrating stream including streambed resistance (Hunt, 1999).
 Units are not specified, but should be consistent length and time.</p>
+</dd>
+</dl>
 <p>The solution becomes the Theis solution if streambed conductance
 is zero, and approaches an image-well solution from Theis or Glover
 and Balmer (1954) as streambed conductance gets very large.
@@ -409,8 +405,6 @@ ndarrays generated with <cite>numpy.meshgrid</cite>.</p>
 <p>Hunt, B., 1999, Unsteady streamflow depletion from ground
 water pumping: Groundwater, v. 37, no. 1, pgs. 98-102,
 <a class="reference external" href="https://doi.org/10.1111/j.1745-6584.1999.tb00962.x">https://doi.org/10.1111/j.1745-6584.1999.tb00962.x</a></p>
-</dd>
-</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -480,13 +474,13 @@ Investigations, Chapter D1, Book 4, <a class="reference external" href="https://
 <dl class="py function">
 <dt class="sig sig-object py" id="pycap.solutions.theis_drawdown">
 <span class="sig-prename descclassname"><span class="pre">pycap.solutions.</span></span><span class="sig-name descname"><span class="pre">theis_drawdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycap/solutions.html#theis_drawdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pycap.solutions.theis_drawdown" title="Link to this definition"></a></dt>
-<dd><dl>
+<dd><dl class="simple">
 <dt>Function to calculate Theis drawdown. Units are not specified, but</dt><dd><p>should be consistent length and time.</p>
+</dd>
+</dl>
 <p>Calculates the Theis drawdown solution at specified times
 or distances from a pumping well.</p>
 <p><a class="reference external" href="https://pubs.usgs.gov/publication/70198446">https://pubs.usgs.gov/publication/70198446</a></p>
-</dd>
-</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -561,7 +555,7 @@ is unit-specific, using feet and days as dimensions.</p>
 
   <div role="contentinfo">
     <p>
-      <span class="lastupdated">Last updated on Aug 04, 2026.
+      <span class="lastupdated">Last updated on Oct 13, 2026.
       </span></p>
   </div>
 
